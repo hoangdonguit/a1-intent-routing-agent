@@ -1,0 +1,67 @@
+{
+  "case_id": "dev_ospf_01",
+  "task_group": "ospf",
+  "split": "dev",
+  "intent": "Chạy OSPF single-area 0.0.0.0 trên ba router; quảng bá cả ba LAN, LAN passive; cost mỗi link router là 10. H1 tới H2 trực tiếp qua R1–R2 và chiều về R2–R1; RIB phải học hai prefix LAN đích bằng OSPF với next hop nêu trong routing_requirements. Không dùng route tĩnh tới LAN xa.",
+  "topology": "../../topologies/triangle3.json",
+  "constraints": [
+    {
+      "source": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "destination": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H1",
+        "R1",
+        "R2",
+        "H2"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    },
+    {
+      "source": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "destination": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H2",
+        "R2",
+        "R1",
+        "H1"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    }
+  ],
+  "routing_requirements": [
+    {
+      "node": "R1",
+      "protocol": "ospf",
+      "prefix": "192.168.2.0/24",
+      "next_hop": "10.0.12.2",
+      "area": "0.0.0.0"
+    },
+    {
+      "node": "R2",
+      "protocol": "ospf",
+      "prefix": "192.168.1.0/24",
+      "next_hop": "10.0.12.1",
+      "area": "0.0.0.0"
+    }
+  ]
+}

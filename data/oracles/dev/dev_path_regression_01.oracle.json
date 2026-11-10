@@ -1,0 +1,91 @@
+{
+  "case_id": "dev_path_regression_01",
+  "checks": [
+    {
+      "source": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "destination": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H1",
+        "R1",
+        "R2",
+        "H2"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    },
+    {
+      "source": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "destination": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H2",
+        "R2",
+        "R1",
+        "H1"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    }
+  ],
+  "regression_checks": [
+    {
+      "source": {
+        "node": "H3",
+        "interface": "eth0",
+        "ip": "192.168.3.10"
+      },
+      "destination": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H3",
+        "R3",
+        "R2",
+        "H2"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    },
+    {
+      "source": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "destination": {
+        "node": "H3",
+        "interface": "eth0",
+        "ip": "192.168.3.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H2",
+        "R2",
+        "R3",
+        "H3"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    }
+  ]
+}

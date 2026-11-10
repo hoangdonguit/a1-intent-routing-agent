@@ -1,0 +1,154 @@
+{
+  "topology_id": "triangle3",
+  "nodes": [
+    {
+      "name": "R1",
+      "kind": "router",
+      "interfaces": [
+        {
+          "name": "eth1",
+          "ipv4": "10.0.12.1/30"
+        },
+        {
+          "name": "eth2",
+          "ipv4": "10.0.13.1/30"
+        },
+        {
+          "name": "eth3",
+          "ipv4": "192.168.1.1/24"
+        }
+      ]
+    },
+    {
+      "name": "R2",
+      "kind": "router",
+      "interfaces": [
+        {
+          "name": "eth1",
+          "ipv4": "10.0.12.2/30"
+        },
+        {
+          "name": "eth2",
+          "ipv4": "10.0.23.1/30"
+        },
+        {
+          "name": "eth3",
+          "ipv4": "192.168.2.1/24"
+        }
+      ]
+    },
+    {
+      "name": "R3",
+      "kind": "router",
+      "interfaces": [
+        {
+          "name": "eth1",
+          "ipv4": "10.0.13.2/30"
+        },
+        {
+          "name": "eth2",
+          "ipv4": "10.0.23.2/30"
+        },
+        {
+          "name": "eth3",
+          "ipv4": "192.168.3.1/24"
+        }
+      ]
+    },
+    {
+      "name": "H1",
+      "kind": "host",
+      "interfaces": [
+        {
+          "name": "eth0",
+          "ipv4": "192.168.1.10/24"
+        }
+      ],
+      "gateway": "192.168.1.1"
+    },
+    {
+      "name": "H2",
+      "kind": "host",
+      "interfaces": [
+        {
+          "name": "eth0",
+          "ipv4": "192.168.2.10/24"
+        }
+      ],
+      "gateway": "192.168.2.1"
+    },
+    {
+      "name": "H3",
+      "kind": "host",
+      "interfaces": [
+        {
+          "name": "eth0",
+          "ipv4": "192.168.3.10/24"
+        }
+      ],
+      "gateway": "192.168.3.1"
+    }
+  ],
+  "links": [
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth1"
+      },
+      "b": {
+        "node": "R2",
+        "interface": "eth1"
+      }
+    },
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth2"
+      },
+      "b": {
+        "node": "R3",
+        "interface": "eth1"
+      }
+    },
+    {
+      "a": {
+        "node": "R2",
+        "interface": "eth2"
+      },
+      "b": {
+        "node": "R3",
+        "interface": "eth2"
+      }
+    },
+    {
+      "a": {
+        "node": "R1",
+        "interface": "eth3"
+      },
+      "b": {
+        "node": "H1",
+        "interface": "eth0"
+      }
+    },
+    {
+      "a": {
+        "node": "R2",
+        "interface": "eth3"
+      },
+      "b": {
+        "node": "H2",
+        "interface": "eth0"
+      }
+    },
+    {
+      "a": {
+        "node": "R3",
+        "interface": "eth3"
+      },
+      "b": {
+        "node": "H3",
+        "interface": "eth0"
+      }
+    }
+  ]
+}

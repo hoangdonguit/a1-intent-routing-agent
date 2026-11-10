@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "a1-intent-routing"
+version = "0.1.0"
+description = "Offline input contracts for A1 routing experiments"
+requires-python = ">=3.12"
+dependencies = []
+
+[project.scripts]
+a1-intent-routing = "a1_intent_routing.__main__:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,93 @@
+{
+  "case_id": "dev_path_regression_01",
+  "task_group": "path_regression",
+  "split": "dev",
+  "intent": "Giữ cấu hình nền H3 tới H2 qua R3–R2 và đường về R2–R3. Thêm route tĩnh cho H1 tới H2 qua R2: H1–R1–R2–H2, chiều về H2–R2–R1–H1; không làm mất hai chiều kết nối H3/H2. Không chạy OSPF/BGP.",
+  "topology": "../../topologies/triangle3.json",
+  "constraints": [
+    {
+      "source": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "destination": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H1",
+        "R1",
+        "R2",
+        "H2"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    },
+    {
+      "source": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "destination": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H2",
+        "R2",
+        "R1",
+        "H1"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    },
+    {
+      "source": {
+        "node": "H3",
+        "interface": "eth0",
+        "ip": "192.168.3.10"
+      },
+      "destination": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H3",
+        "R3",
+        "R2",
+        "H2"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    },
+    {
+      "source": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "destination": {
+        "node": "H3",
+        "interface": "eth0",
+        "ip": "192.168.3.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H2",
+        "R2",
+        "R3",
+        "H3"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    }
+  ]
+}
