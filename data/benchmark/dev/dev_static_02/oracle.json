@@ -1,0 +1,49 @@
+{
+  "case_id": "dev_static_02",
+  "checks": [
+    {
+      "source": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "destination": {
+        "node": "H3",
+        "interface": "eth0",
+        "ip": "192.168.3.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H1",
+        "R1",
+        "R3",
+        "H3"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    },
+    {
+      "source": {
+        "node": "H3",
+        "interface": "eth0",
+        "ip": "192.168.3.10"
+      },
+      "destination": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "reachability": true,
+      "required_path": [
+        "H3",
+        "R3",
+        "R1",
+        "H1"
+      ],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    }
+  ],
+  "regression_checks": [],
+  "routing_checks": []
+}

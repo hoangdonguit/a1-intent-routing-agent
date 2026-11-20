@@ -1,0 +1,18 @@
+{
+  "model": "Qwen/Qwen3-4B-Instruct-2507",
+  "revision": "cdbee75f17c01a7cc42f958dc650907174af0554",
+  "files": [
+    {
+      "file": "tokenizer.json",
+      "sha256": "aeb13307a71acd8fe81861d94ad54ab689df773318809eed3cbe794b4492dae4",
+      "bytes": 11422654
+    },
+    {
+      "file": "tokenizer_config.json",
+      "sha256": "a62ff0a2472a0fa1b8eaabcb57c59b58afa42a22831dc141400b6e0cf2b65ce3",
+      "bytes": 9377
+    }
+  ],
+  "purpose": "tokenization/context preflight for the existing Qwen model only; no model weights downloaded",
+  "ollama_template_sha256": "40c21f34cf67d8c760ef72f8ad3ae5afad514299d4b06e91dd9a8d705af7b541"
+}

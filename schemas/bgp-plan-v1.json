@@ -1,0 +1,152 @@
+{
+  "type": "object",
+  "properties": {
+    "version": {
+      "type": "string",
+      "enum": [
+        "bgp-plan-v1"
+      ]
+    },
+    "policies": {
+      "type": "array",
+      "maxItems": 8,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,31}$"
+          },
+          "rules": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,31}$"
+                },
+                "prefix": {
+                  "type": "string"
+                },
+                "action": {
+                  "type": "string",
+                  "enum": [
+                    "permit",
+                    "deny"
+                  ]
+                }
+              },
+              "required": [
+                "id",
+                "prefix",
+                "action"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "default": {
+            "type": "string",
+            "enum": [
+              "permit",
+              "deny"
+            ]
+          }
+        },
+        "required": [
+          "id",
+          "rules",
+          "default"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "devices": {
+      "type": "array",
+      "minItems": 6,
+      "maxItems": 6,
+      "items": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "R1",
+              "R2",
+              "R3",
+              "R4",
+              "R5",
+              "R6"
+            ]
+          },
+          "asn": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 4294967295
+          },
+          "originate": {
+            "type": "array",
+            "maxItems": 8,
+            "uniqueItems": true,
+            "items": {
+              "type": "string"
+            }
+          },
+          "peers": {
+            "type": "array",
+            "maxItems": 8,
+            "items": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "string",
+                  "pattern": "^[A-Za-z][A-Za-z0-9_-]{0,31}$"
+                },
+                "address": {
+                  "type": "string"
+                },
+                "remote_as": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 4294967295
+                },
+                "ipv4": {
+                  "type": "boolean"
+                },
+                "import": {
+                  "type": "string"
+                },
+                "export": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "id",
+                "address",
+                "remote_as",
+                "ipv4",
+                "import",
+                "export"
+              ],
+              "additionalProperties": false
+            }
+          }
+        },
+        "required": [
+          "id",
+          "asn",
+          "originate",
+          "peers"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "version",
+    "policies",
+    "devices"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,9 @@
+{
+  "image": "batfish/batfish@sha256:105a13d2f6581c7eb82cc36c413c09cdb81044f210f9155f5bf1d148aa726dbb",
+  "tag": "test-2026.11.09.3904",
+  "pybatfish": "2026.9.17.3748",
+  "host": "127.0.0.1",
+  "port": 9996,
+  "memory": "6g",
+  "cpus": 4
+}

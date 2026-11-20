@@ -1,0 +1,2 @@
+# Optional hybrid BGP-plan validator; does not change the raw-FRR pipeline.
+jsonschema==4.10.3

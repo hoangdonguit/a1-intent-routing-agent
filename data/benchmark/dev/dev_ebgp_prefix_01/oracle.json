@@ -1,0 +1,131 @@
+{
+  "case_id": "dev_ebgp_prefix_01",
+  "checks": [
+    {
+      "source": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "destination": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "reachability": true,
+      "required_path": [],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    },
+    {
+      "source": {
+        "node": "H2",
+        "interface": "eth0",
+        "ip": "192.168.2.10"
+      },
+      "destination": {
+        "node": "H1",
+        "interface": "eth0",
+        "ip": "192.168.1.10"
+      },
+      "reachability": true,
+      "required_path": [],
+      "direction": "forward",
+      "ecmp": "all_paths"
+    }
+  ],
+  "regression_checks": [],
+  "routing_checks": [],
+  "prefix_checks": [
+    {
+      "node": "R1",
+      "prefix": "192.168.2.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R1",
+      "prefix": "192.168.3.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R2",
+      "prefix": "192.168.1.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R2",
+      "prefix": "192.168.2.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R2",
+      "prefix": "192.168.3.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R3",
+      "prefix": "192.168.1.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R3",
+      "prefix": "192.168.2.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R3",
+      "prefix": "192.168.3.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R4",
+      "prefix": "192.168.1.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R4",
+      "prefix": "192.168.3.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R5",
+      "prefix": "192.168.1.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R5",
+      "prefix": "192.168.2.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R5",
+      "prefix": "192.168.3.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R6",
+      "prefix": "192.168.1.0/24",
+      "present": true,
+      "protocol": "bgp"
+    },
+    {
+      "node": "R6",
+      "prefix": "192.168.2.0/24",
+      "present": true,
+      "protocol": "bgp"
+    }
+  ]
+}

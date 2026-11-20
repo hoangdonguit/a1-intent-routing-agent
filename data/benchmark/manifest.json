@@ -1,0 +1,232 @@
+{
+  "schema_version": 2,
+  "development_count": 8,
+  "evaluation_count": 24,
+  "prompt_tuning": "development only; no LLM requests on evaluation",
+  "entries": [
+    {
+      "case_id": "dev_static_01",
+      "split": "dev",
+      "task_group": "static",
+      "path": "data/benchmark/dev/dev_static_01",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "dev_static_02",
+      "split": "dev",
+      "task_group": "static",
+      "path": "data/benchmark/dev/dev_static_02",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_static_01",
+      "split": "evaluation",
+      "task_group": "static",
+      "path": "data/benchmark/evaluation/evaluation_static_01",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_static_02",
+      "split": "evaluation",
+      "task_group": "static",
+      "path": "data/benchmark/evaluation/evaluation_static_02",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_static_03",
+      "split": "evaluation",
+      "task_group": "static",
+      "path": "data/benchmark/evaluation/evaluation_static_03",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_static_04",
+      "split": "evaluation",
+      "task_group": "static",
+      "path": "data/benchmark/evaluation/evaluation_static_04",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_static_05",
+      "split": "evaluation",
+      "task_group": "static",
+      "path": "data/benchmark/evaluation/evaluation_static_05",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_static_06",
+      "split": "evaluation",
+      "task_group": "static",
+      "path": "data/benchmark/evaluation/evaluation_static_06",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "dev_ospf_01",
+      "split": "dev",
+      "task_group": "ospf",
+      "path": "data/benchmark/dev/dev_ospf_01",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "dev_ospf_02",
+      "split": "dev",
+      "task_group": "ospf",
+      "path": "data/benchmark/dev/dev_ospf_02",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ospf_01",
+      "split": "evaluation",
+      "task_group": "ospf",
+      "path": "data/benchmark/evaluation/evaluation_ospf_01",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ospf_02",
+      "split": "evaluation",
+      "task_group": "ospf",
+      "path": "data/benchmark/evaluation/evaluation_ospf_02",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ospf_03",
+      "split": "evaluation",
+      "task_group": "ospf",
+      "path": "data/benchmark/evaluation/evaluation_ospf_03",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ospf_04",
+      "split": "evaluation",
+      "task_group": "ospf",
+      "path": "data/benchmark/evaluation/evaluation_ospf_04",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ospf_05",
+      "split": "evaluation",
+      "task_group": "ospf",
+      "path": "data/benchmark/evaluation/evaluation_ospf_05",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ospf_06",
+      "split": "evaluation",
+      "task_group": "ospf",
+      "path": "data/benchmark/evaluation/evaluation_ospf_06",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "dev_ebgp_prefix_01",
+      "split": "dev",
+      "task_group": "ebgp_prefix",
+      "path": "data/benchmark/dev/dev_ebgp_prefix_01",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "dev_ebgp_prefix_02",
+      "split": "dev",
+      "task_group": "ebgp_prefix",
+      "path": "data/benchmark/dev/dev_ebgp_prefix_02",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ebgp_prefix_01",
+      "split": "evaluation",
+      "task_group": "ebgp_prefix",
+      "path": "data/benchmark/evaluation/evaluation_ebgp_prefix_01",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ebgp_prefix_02",
+      "split": "evaluation",
+      "task_group": "ebgp_prefix",
+      "path": "data/benchmark/evaluation/evaluation_ebgp_prefix_02",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ebgp_prefix_03",
+      "split": "evaluation",
+      "task_group": "ebgp_prefix",
+      "path": "data/benchmark/evaluation/evaluation_ebgp_prefix_03",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ebgp_prefix_04",
+      "split": "evaluation",
+      "task_group": "ebgp_prefix",
+      "path": "data/benchmark/evaluation/evaluation_ebgp_prefix_04",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ebgp_prefix_05",
+      "split": "evaluation",
+      "task_group": "ebgp_prefix",
+      "path": "data/benchmark/evaluation/evaluation_ebgp_prefix_05",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_ebgp_prefix_06",
+      "split": "evaluation",
+      "task_group": "ebgp_prefix",
+      "path": "data/benchmark/evaluation/evaluation_ebgp_prefix_06",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "dev_path_regression_01",
+      "split": "dev",
+      "task_group": "path_regression",
+      "path": "data/benchmark/dev/dev_path_regression_01",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "dev_path_regression_02",
+      "split": "dev",
+      "task_group": "path_regression",
+      "path": "data/benchmark/dev/dev_path_regression_02",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_path_regression_01",
+      "split": "evaluation",
+      "task_group": "path_regression",
+      "path": "data/benchmark/evaluation/evaluation_path_regression_01",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_path_regression_02",
+      "split": "evaluation",
+      "task_group": "path_regression",
+      "path": "data/benchmark/evaluation/evaluation_path_regression_02",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_path_regression_03",
+      "split": "evaluation",
+      "task_group": "path_regression",
+      "path": "data/benchmark/evaluation/evaluation_path_regression_03",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_path_regression_04",
+      "split": "evaluation",
+      "task_group": "path_regression",
+      "path": "data/benchmark/evaluation/evaluation_path_regression_04",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_path_regression_05",
+      "split": "evaluation",
+      "task_group": "path_regression",
+      "path": "data/benchmark/evaluation/evaluation_path_regression_05",
+      "reference_status": "UNVERIFIED"
+    },
+    {
+      "case_id": "evaluation_path_regression_06",
+      "split": "evaluation",
+      "task_group": "path_regression",
+      "path": "data/benchmark/evaluation/evaluation_path_regression_06",
+      "reference_status": "UNVERIFIED"
+    }
+  ]
+}

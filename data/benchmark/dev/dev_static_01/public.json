@@ -1,0 +1,67 @@
+{
+  "case_id": "dev_static_01",
+  "split": "dev",
+  "task_group": "static",
+  "topology": "../../../../topologies/triangle3.json",
+  "intent_vi": "Yêu cầu kết nối H1 (192.168.1.10) tới H2 (192.168.2.10); mọi đường chuyển tiếp khả dụng phải đi đúng chuỗi H1 → R1 → R2 → H2. Yêu cầu kết nối H2 (192.168.2.10) tới H1 (192.168.1.10); mọi đường chuyển tiếp khả dụng phải đi đúng chuỗi H2 → R2 → R1 → H1. Chỉ dùng static; giữ nguyên địa chỉ interface và gateway host, chỉ sửa định tuyến.",
+  "specification": {
+    "schema_version": 2,
+    "case_id": "dev_static_01",
+    "allowed_protocols": [
+      "static"
+    ],
+    "traffic": [
+      {
+        "source": {
+          "node": "H1",
+          "interface": "eth0",
+          "ip": "192.168.1.10"
+        },
+        "destination": {
+          "node": "H2",
+          "interface": "eth0",
+          "ip": "192.168.2.10"
+        },
+        "reachability": true,
+        "required_path": [
+          "H1",
+          "R1",
+          "R2",
+          "H2"
+        ],
+        "direction": "forward",
+        "ecmp": "all_paths"
+      },
+      {
+        "source": {
+          "node": "H2",
+          "interface": "eth0",
+          "ip": "192.168.2.10"
+        },
+        "destination": {
+          "node": "H1",
+          "interface": "eth0",
+          "ip": "192.168.1.10"
+        },
+        "reachability": true,
+        "required_path": [
+          "H2",
+          "R2",
+          "R1",
+          "H1"
+        ],
+        "direction": "forward",
+        "ecmp": "all_paths"
+      }
+    ],
+    "protocol_requirements": [],
+    "mutable": [
+      "routing"
+    ],
+    "fixed": [
+      "interface_addressing",
+      "host_gateway"
+    ],
+    "source": "public CaseInput constraints; Vietnamese intent reviewed for equivalence"
+  }
+}

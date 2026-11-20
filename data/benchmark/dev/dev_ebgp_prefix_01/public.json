@@ -1,0 +1,76 @@
+{
+  "case_id": "dev_ebgp_prefix_01",
+  "split": "dev",
+  "task_group": "ebgp_prefix",
+  "topology": "../../../../topologies/sixrouter.json",
+  "intent_vi": "Yêu cầu kết nối H1 (192.168.1.10) tới H2 (192.168.2.10). Yêu cầu kết nối H2 (192.168.2.10) tới H1 (192.168.1.10). Chỉ dùng bgp; giữ nguyên địa chỉ interface và gateway host, chỉ sửa định tuyến. Thiết lập phiên eBGP IPv4 ở cả hai đầu của mọi link router–router có ASN khác nhau trong topology, dùng ASN cố định được cung cấp riêng; quảng bá LAN H1/H2/H3. Mọi router khác phải học các LAN được phép bằng BGP; prefix bị cấm export không được học qua BGP.",
+  "specification": {
+    "schema_version": 2,
+    "case_id": "dev_ebgp_prefix_01",
+    "allowed_protocols": [
+      "bgp"
+    ],
+    "traffic": [
+      {
+        "source": {
+          "node": "H1",
+          "interface": "eth0",
+          "ip": "192.168.1.10"
+        },
+        "destination": {
+          "node": "H2",
+          "interface": "eth0",
+          "ip": "192.168.2.10"
+        },
+        "reachability": true,
+        "required_path": [],
+        "direction": "forward",
+        "ecmp": "all_paths"
+      },
+      {
+        "source": {
+          "node": "H2",
+          "interface": "eth0",
+          "ip": "192.168.2.10"
+        },
+        "destination": {
+          "node": "H1",
+          "interface": "eth0",
+          "ip": "192.168.1.10"
+        },
+        "reachability": true,
+        "required_path": [],
+        "direction": "forward",
+        "ecmp": "all_paths"
+      }
+    ],
+    "protocol_requirements": [],
+    "mutable": [
+      "routing"
+    ],
+    "fixed": [
+      "interface_addressing",
+      "host_gateway"
+    ],
+    "source": "operator-authored scenario table, independent of model outputs",
+    "bgp": {
+      "asns": {
+        "R1": 65001,
+        "R2": 65002,
+        "R3": 65003,
+        "R4": 65004,
+        "R5": 65005,
+        "R6": 65006
+      },
+      "advertise_hosts": [
+        "H1",
+        "H2",
+        "H3"
+      ],
+      "deny_export_hosts": [],
+      "required_remote_protocol": "bgp",
+      "peering_scope": "all_inter_as_router_links",
+      "peering_endpoints": "both_ends"
+    }
+  }
+}
