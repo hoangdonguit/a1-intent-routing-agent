@@ -1,0 +1,45 @@
+[
+  {
+    "round": "round-3",
+    "messages_sha256": "5ebad3a5043a8efd8533d18b580b3c874750dbe571608a8272aa2b9a8daeea3d",
+    "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+    "messages_path_normalized_sha256": "5011688c301d9da886b8de5fb484b402908f51096cfdd200e1a6ee433617152d",
+    "raw_response_sha256": "3520ff64c785c82ff5ffedef9c61b765d63de58d3c45afa9c5c808c46a9bdc71",
+    "assistant_content_sha256": "d05dcd02bfd905077b2b917db8c2f54bfde15a7aa9b4e3c722ab3c669a46ca12",
+    "candidate_sha256": "a80284d4da398427aadb0df7a4f8cf3a1e2183bd623d4367766e2e05db48aa5f",
+    "candidate_statements_sha256": "4abaebde1cadd3302503ad5a1c7af529c163cea3880259a85d79aeb925e9c2eb",
+    "errors_sha256": "cd50a7c2e77ef009f3c1e547f2b43c3cf5e8c839496f5410b9453a3124c4cb84",
+    "request": "runs/bgp-remaining-repairs-20261117/round-3/dev_ebgp_prefix_02/request.json",
+    "changed_devices": []
+  },
+  {
+    "round": "round-4",
+    "messages_sha256": "ec3d7aa509821f3094c786d6d92c9cfc5c4c75665f01f87c1a3a034497970bd8",
+    "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+    "messages_path_normalized_sha256": "b781c29cbfaa88111a51125cc6c56522b0999c4f9fb9a58c9c6ed0d44999671a",
+    "raw_response_sha256": "507e797673f541047d3d47f718c07f0da47c8086e03b92978aab328b487542e4",
+    "assistant_content_sha256": "d05dcd02bfd905077b2b917db8c2f54bfde15a7aa9b4e3c722ab3c669a46ca12",
+    "candidate_sha256": "a80284d4da398427aadb0df7a4f8cf3a1e2183bd623d4367766e2e05db48aa5f",
+    "candidate_statements_sha256": "4abaebde1cadd3302503ad5a1c7af529c163cea3880259a85d79aeb925e9c2eb",
+    "errors_sha256": "cd50a7c2e77ef009f3c1e547f2b43c3cf5e8c839496f5410b9453a3124c4cb84",
+    "request": "runs/bgp-remaining-repairs-20261117/round-4/dev_ebgp_prefix_02/request.json",
+    "changed_devices": [],
+    "comparison": "messages differ; inspect actual feedback",
+    "same_candidate": true
+  },
+  {
+    "round": "round-5",
+    "messages_sha256": "894c9898b9908fe1f0901ede78b66586005bdc610a74e9d89b29008d7a18fb92",
+    "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+    "messages_path_normalized_sha256": "b781c29cbfaa88111a51125cc6c56522b0999c4f9fb9a58c9c6ed0d44999671a",
+    "raw_response_sha256": "8653b2dcf468593b5246b3f97e8b81247b4bc3ab935cb224937790a103f26b77",
+    "assistant_content_sha256": "d05dcd02bfd905077b2b917db8c2f54bfde15a7aa9b4e3c722ab3c669a46ca12",
+    "candidate_sha256": "a80284d4da398427aadb0df7a4f8cf3a1e2183bd623d4367766e2e05db48aa5f",
+    "candidate_statements_sha256": "4abaebde1cadd3302503ad5a1c7af529c163cea3880259a85d79aeb925e9c2eb",
+    "errors_sha256": "cd50a7c2e77ef009f3c1e547f2b43c3cf5e8c839496f5410b9453a3124c4cb84",
+    "request": "runs/bgp-remaining-repairs-20261117/round-5/dev_ebgp_prefix_02/request.json",
+    "changed_devices": [],
+    "comparison": "path-normalized messages equal",
+    "same_candidate": true
+  }
+]

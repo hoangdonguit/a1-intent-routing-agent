@@ -1,0 +1,31 @@
+{
+  "version": "bgp-plan-study-v1",
+  "code_commit": "caf2dbff691b509fd6acf575cbb32af2ca28a830",
+  "files": {
+    "schemas/bgp-plan-v1.json": "1fe9633cd7d137bdb83765814d78b61eb5d2f4007d614f6499ba1c7e3e83c761",
+    "prompts/bgp-plan-v1.txt": "2b6d4d3a5bbe2444590f5a3b5734dd7459fb06eb8334b12fc74667cc5951f301",
+    "src/a1_intent_routing/bgp_plan.py": "48a7a3d484e9207307eb9d53ea7af82238cf49ad1702c02dcb1445494cccc630",
+    "src/a1_intent_routing/bgp_plan_feedback.py": "4613b4adbb07d0c5c89c3a84038c63ef73e490177174a5cc332e993343b6eace",
+    "src/a1_intent_routing/bgp_export.py": "563b000d85b4232aefd557fbb5bde4ce7af91f40924ee4b62ce29d2810ea127f",
+    "src/a1_intent_routing/bgp_hybrid_eval.py": "665af2df98b46b48c19c95f3733eef8c2129c8c9d5780618f4b09f9b2cb9db2a",
+    "ops/bgp_plan_study.py": "92372acf8f07a4e1207a9bc9f36977192b9cedeea16c2d04b3dae08f46490797",
+    "ops/bgp_plan_controls.py": "d4adf596a4e1e3072371f87e3a388b6fd5930f17af9123f43ba8ea484fac9d7e"
+  },
+  "model": {
+    "name": "qwen3:4b-instruct-2507-q4_K_M",
+    "digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0"
+  },
+  "options": {
+    "num_ctx": 12288,
+    "num_predict": 3072,
+    "temperature": 0,
+    "seed": 539,
+    "top_k": 40,
+    "top_p": 0.9,
+    "repeat_penalty": 1.0
+  },
+  "stop_policy": "first pass/environment error/semantic cycle/5 repairs; no imputation",
+  "root_calibration": "pending",
+  "pilot_calls": 0,
+  "primary_updated": false
+}

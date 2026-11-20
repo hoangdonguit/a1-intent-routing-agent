@@ -1,0 +1,22 @@
+[
+  {
+    "label": "dev_ebgp_prefix_01--positive",
+    "syntax": "pass",
+    "batfish": "pass"
+  },
+  {
+    "label": "dev_ebgp_prefix_02--positive",
+    "syntax": "pass",
+    "batfish": "pass"
+  },
+  {
+    "label": "dev_ebgp_prefix_02--inverted-decision",
+    "syntax": "pass",
+    "batfish": "fail"
+  },
+  {
+    "label": "dev_ebgp_prefix_02--sender-allows-receiver-denies",
+    "syntax": "pass",
+    "batfish": "pass"
+  }
+]

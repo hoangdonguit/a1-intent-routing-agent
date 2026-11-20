@@ -1,0 +1,12 @@
+{
+  "735d69e0fbdf7ea9427fcff4855bb51f52a81fc2": {
+    "sha": "735d69e0fbdf7ea9427fcff4855bb51f52a81fc2",
+    "url": "https://raw.githubusercontent.com/batfish/batfish/735d69e0fbdf7ea9427fcff4855bb51f52a81fc2/projects/batfish/src/main/java/org/batfish/representation/frr/FrrConversions.java",
+    "sha256": "be2822d2c91ef1ed6ab0952dc29f0b5f2f2d0e49acad56da369f0313c8f96294"
+  },
+  "8dfc9d8": {
+    "sha": "8dfc9d8dc4b4b7713ef9da4cbc21006c6bc017d9",
+    "url": "https://raw.githubusercontent.com/batfish/batfish/8dfc9d8dc4b4b7713ef9da4cbc21006c6bc017d9/projects/batfish/src/main/java/org/batfish/representation/frr/FrrConversions.java",
+    "sha256": "be2822d2c91ef1ed6ab0952dc29f0b5f2f2d0e49acad56da369f0313c8f96294"
+  }
+}

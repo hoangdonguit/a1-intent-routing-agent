@@ -1,0 +1,9 @@
+{
+  "offline_unit_contract_tests": 186,
+  "result": "pass",
+  "summary_unobserved_rounds_null": "pass",
+  "bash_syntax": "pass",
+  "new_model_calls": 0,
+  "real_root_lab_calibration": "not_run_password_required",
+  "pilot": "not_run"
+}
