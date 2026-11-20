@@ -1,0 +1,261 @@
+{
+  "execution_revision": "bgp-plan-study-v2",
+  "trajectory": "dev_ebgp_prefix_01--B1",
+  "repeat": 0,
+  "repair_count": 0,
+  "generations_observed": 1,
+  "raw_ir_schema_valid": true,
+  "rendered_syntax_valid": true,
+  "status": "environment_error",
+  "tools": {
+    "syntax_checker": "pass",
+    "protocol_scope": "pass",
+    "lab_ping_tester": "fail",
+    "batfish_verifier": "environment_error",
+    "bgp_export_tester": "pass"
+  },
+  "metrics": {
+    "input_tokens": 3129,
+    "output_tokens": 1923,
+    "api_total_seconds": 208.424066096,
+    "api_load_seconds": 5.573642166,
+    "api_prompt_eval_seconds": 3.316732,
+    "api_eval_seconds": 199.510498
+  },
+  "http_seconds": 208.4248919749998,
+  "tool_seconds": 99.77607610799987,
+  "measured_generation_plus_tools_seconds": 308.2009680829997,
+  "end_to_end_wall_seconds": null,
+  "end_to_end_wall_unavailable": "controller preflight/restore overhead not individually timed",
+  "messages_sha256": "8c5e52ee2f819d4137e2303149eeb07425f40b2d55d55cd282feea0b02c01e12",
+  "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+  "raw_response_sha256": "29d9150538cfa6e123a3c14174e78c857ef5fb3c4ae8aceeb8d67edad1853adc",
+  "candidate_hashes": {
+    "R1": "6bacb17ca6b04f81da81392e5d2300b50f29e020c28a92dde84ccf1428e1cd3d",
+    "R2": "350ad41365221bc8a4d2b5baf9f758cc6d4b6b3de9cb21373ddec4d850530cc1",
+    "R3": "d1fa8e52db088f7ab1c2403f02a751b94716c1333e8dc883f2383bd94a2af741",
+    "R4": "8a514fdf3b7c2b99c647ddc7b3ae3fa12dc8bb21327a74d9ccd5eb9bc296f057",
+    "R5": "efc6280055db4d4a9d8098924ba737f54c13ae3c1785bcd30efea48361a4ac8c",
+    "R6": "5261ebe0732e04587244e79362a377e1033557b5fe856c11aa82fdd0bbba2ff5"
+  },
+  "observed_decisions": {
+    "R2_originate": [
+      "10.6.2.0/30",
+      "10.6.7.0/30",
+      "192.168.2.0/24"
+    ],
+    "peers_missing_import_or_export_policy": 13,
+    "peer_entries": 13
+  },
+  "error_properties": [
+    {
+      "tool": "lab_ping_tester",
+      "device": null,
+      "property": "convergence"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R2",
+      "property": "bgp_peer.10.6.7.2"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R5",
+      "property": "bgp_peer.10.6.7.1"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R1",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R1",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R2",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R2",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R2",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R3",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R3",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R3",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R4",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R4",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R5",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R5",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R5",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R6",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "R6",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "H1",
+      "property": "intent.reachability"
+    },
+    {
+      "tool": "lab_ping_tester",
+      "device": "H2",
+      "property": "intent.reachability"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": null,
+      "property": "bgp_origination_coverage"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R1",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R1",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R2",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R2",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R2",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R3",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R3",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R3",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R4",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R4",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R5",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R5",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R5",
+      "property": "prefix:192.168.3.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R6",
+      "property": "prefix:192.168.1.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "R6",
+      "property": "prefix:192.168.2.0/24"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "H1",
+      "property": "traffic:0:reachability"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "H1",
+      "property": "traffic:0:path"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "H2",
+      "property": "traffic:1:reachability"
+    },
+    {
+      "tool": "batfish_verifier",
+      "device": "H2",
+      "property": "traffic:1:path"
+    }
+  ],
+  "disagreements": 0,
+  "evidence": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--B1/round-0",
+  "restore": {
+    "status": "pass",
+    "path": "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-plan-study-20261120-02/session-1795146440499964836"
+  },
+  "repair_effectiveness": "not_measured; A1/A2 not generated",
+  "remaining_trajectories": 5,
+  "primary_updated": false
+}

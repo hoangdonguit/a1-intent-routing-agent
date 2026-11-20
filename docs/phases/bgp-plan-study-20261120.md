@@ -2,7 +2,7 @@
 
 ## Kết luận hiện tại
 
-Đã triển khai nhánh **hybrid opt-in**, chưa đổi raw-FRR mặc định và chưa có kết quả model mới. Hai control đúng do renderer tạo qua FRR parser/daemon và Batfish offline; control đảo policy fail đúng kỳ vọng. Control sender cho phép/receiver chặn vẫn pass bộ kiểm offline cũ, vì vậy phép kiểm export phía sender là bổ sung cần calibration thật, không được gọi là đã nghiệm thu chỉ nhờ unit test. Calibration root lần đầu đã chạy: hai positive full pass, ba negative fail đúng; một negative no-op bị phát hiện, giữ verdict pass và dừng trước model. Revision2 đã hoàn tất10/10control đúng kỳ vọng và restore pass; không suy rằng model BGP02 phải pass mọi lần mới hoàn thành đồ án.
+Đã triển khai nhánh **hybrid opt-in**, chưa đổi raw-FRR mặc định và đã có1call hybrid B1 với IR/syntaxpass nhưng labfail/Batfishcoverageerror, chưa có fullpass hay bằng chứng tự sửa mới. Hai control đúng do renderer tạo qua FRR parser/daemon và Batfish offline; control đảo policy fail đúng kỳ vọng. Control sender cho phép/receiver chặn vẫn pass bộ kiểm offline cũ, vì vậy phép kiểm export phía sender là bổ sung cần calibration thật, không được gọi là đã nghiệm thu chỉ nhờ unit test. Calibration root lần đầu đã chạy: hai positive full pass, ba negative fail đúng; một negative no-op bị phát hiện, giữ verdict pass và dừng trước model. Revision2 đã hoàn tất10/10control đúng kỳ vọng và restore pass; không suy rằng model BGP02 phải pass mọi lần mới hoàn thành đồ án.
 
 Nguồn: bản đã nộp `/home/xuandong/4_Ai_UngDung/Doan/docs/Group12_Proposal.pdf`, 3 trang, SHA256 `28cb9b5b018abad999c8775e1b3a1a357fea70cad08e9b3658bd46dcd5cf73a4`; đề `/home/xuandong/4_Ai_UngDung/Doan/docs/NT539.R11_DeTai_CuoiKy.pdf`, mục A1 và yêu cầu sản phẩm/rubric, SHA256 `518fac5a9aac95f0be10535635061086dbf41fa94e204074f326160fdf8b87bf`. Đã đọc lại toàn bộ proposal và phần đề liên quan. DOCX lịch sử không bổ sung cam kết. Proposal §1 không mặc định agent tốt hơn baseline; §3/7 coi 6–8B là mở rộng; Việt–Anh dev và B0 SyNET gốc vẫn là cam kết. Hybrid này là thử nghiệm mở rộng biểu diễn, không thay primary hay B0.
 
@@ -113,3 +113,15 @@ sudo runs/batfish-venv/bin/python ops/bgp_plan_study.py resume --pilot --seconds
 ```
 
 Đây chỉ là phần đầu pilot. Toàn bộ pilot có trần26call; nếu mỗi call dùng hết900giây thì riêng generation đã6,5giờ. Không tự chạy trọn số đó trong phiên mở máy này. Các phiên sau dùng launcher resume, vẫn trần2call/phiên và checkpoint chung, không sinh lại phần đã lưu.
+
+### Pilot call đầu đã hoàn tất; dừng phiên ở checkpoint
+
+[Summary](../../results/bgp-plan-study-20261120/pilot-first-call.json): BGP01–B1 initial,1generation,0repair. IR schema **pass**, rendered FRR syntax **pass**, protocolscope **pass**, lab **fail**, Batfish **environment_error** (origination coveragev5), export scope **pass/not-applicable** vì BGP01 không có deny-export intent. Verdict cuối **environment_error**,0disagreement được ghi. Không lấy cú pháp render đúng làm raw-FRR model syntax accuracy.
+
+Model chọn thêm originate H2 tại R2 và có13/13peer thiếu import hoặc export policy; FRR ghi Established nhưng peerState Policy và không đạt convergence. Không sửa các quyết định đó trong renderer. Coverageerror không biến thành lời nhắc để sinh lại B1. Không gọi kết quả này là bằng chứng renderer cải thiện intent success hoặc A2 tự sửa tốt hơn.
+
+Chi phí duy nhất đã đo:3129input/1923outputtoken; API208.424giây, HTTP208.425giây, tool99.776giây. Tổng hai thành phần đo được308.201giây; end-to-end bao gồm overhead/preflight/restore chưa đo riêng để null, không giả bằng tổng đó. Context thực12288 đã xác minh. Restorepass, không còn runner của phiên. Còn5trajectory chưa sinh; đối tượng pending0round trong state không phải một lượt đã quan sát.
+
+Minimal handoff của quan sát này: `runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--B1/round-0/` chứa payload,preflight,raw-response,ir,configs,evaluation,record; summary Git lưu hash. B1 không có feedback gửi model. Expected: toàn bộ intent/regression qua syntax/BF/lab. Observed: schema/syntax qua nhưng model chọn mạng sai và chạm vùng coverage. A1/A2 chưa chạy nên **không có feedback/repair mới để bàn giao hoặc kết luận**. Không cần lặp lại10control hay8variant đã đóng.
+
+Sau mở máy: `bash ops/run_bgp_plan_study.sh resume` tiếp tục A1 của BGP01, không sinh lại B1 đã lưu. Vẫn tối đa2call/phiên. Không chạy cả25call tối đa còn lại một cách không giới hạn. Các bước bàn giao còn thiếu: hoàn tất6trajectory pilot trước kết luận hiệu quả; đối chứng8dev nếu có tín hiệu tốt; fresh-host reproduction, demo/video và review bộ nộp. Model fail/coverage không làm toàn đồ án BLOCKED vĩnh viễn; primary và score cũ không thay đổi.
