@@ -27,14 +27,14 @@ def inventory():
     return {'own':sorted(r['ID'] for r in rows if r['Names'].startswith('clab-a1-sixrouter-')),'other':{r['ID']:{k:r[k] for k in ['Names','State','Image']} for r in rows if not r['Names'].startswith('clab-a1-sixrouter-')},'networks':sorted(subprocess.check_output(['docker','network','ls','-q'],text=True,timeout=15).split()),'routes':json.loads(subprocess.check_output(['ip','-j','route'],text=True,timeout=15))}
 
 
-def evaluate(root,cid,configs,out,diagnostic_connected=False):
+def evaluate(root,cid,configs,out,diagnostic_connected=False,diagnostic_static=False):
     root=Path(root);out=Path(out);out.mkdir(parents=True,exist_ok=False);public,t,base,d=load_case(root,cid);ps=public['specification'];reports=[];start=time.monotonic()
     if diagnostic_connected:
         from dataclasses import replace
         from .contracts import Interface
         t=replace(t,nodes=tuple(replace(n,interfaces=n.interfaces+(Interface('lo','203.0.113.1/24'),)) if n.name=='R2' else n for n in t.nodes))
     files={n:Path(configs)/(n+'.conf') for n in base};syntax=syntax_checker(files,t,json.loads((root/'labs/triangle3/images.lock.json').read_text()),Evidence(out/'syntax')).to_dict();reports.append(syntax)
-    if syntax['status']=='pass':reports.append(check_protocols(t,files,['bgp'],fixed_asns=ps['bgp']['asns']))
+    if syntax['status']=='pass':reports.append(check_protocols(t,files,['bgp','static'] if diagnostic_static else ['bgp'],fixed_asns=ps['bgp']['asns']))
     if any(r['status']!='pass' for r in reports):
         result={'status':'environment_error' if any(r['status']=='environment_error' for r in reports) else 'fail','reports':reports,'errors':[dict(e,tool=r['tool']) for r in reports for e in r.get('errors',[])],'gate':'syntax_or_scope'}
     else:

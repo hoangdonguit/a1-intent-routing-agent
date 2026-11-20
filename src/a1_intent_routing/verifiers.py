@@ -218,7 +218,9 @@ def syntax_checker(configs, topology, lock, evidence):
             # Materialize interfaces in this isolated namespace so zebra/bgpd see
             # candidate addresses, including invalid self-neighbors, during load.
             for interface in router.interfaces:
-                evidence.run(['docker','exec',name,'ip','link','add',interface.name,'type','dummy'])
+                # Linux already creates lo in every namespace.
+                if interface.name!='lo':
+                    evidence.run(['docker','exec',name,'ip','link','add',interface.name,'type','dummy'])
                 evidence.run(['docker','exec',name,'ip','addr','add',interface.ipv4,'dev',interface.name])
                 evidence.run(['docker','exec',name,'ip','link','set',interface.name,'up'])
             evidence.run(['docker','cp',str(config),f'{name}:/tmp/candidate.conf'])

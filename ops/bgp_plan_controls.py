@@ -30,7 +30,7 @@ def controls(public,t):
     variant('wrong-asn',lambda p:dev(p,'R2').update(asn=60002))
     variant('self-neighbor',lambda p:dev(p,'R1')['peers'][0].update(address='10.6.1.1'))
     variant('missing-peer',lambda p:dev(p,'R2')['peers'].pop())
-    variant('missing-originate',lambda p:dev(p,'R5').update(originate=[]))
+    variant('missing-originate',lambda p:dev(p,'R6').update(originate=[]))
     variant('leak',lambda p:p['policies'][1].update(rules=[]))
     variant('unattached-policy',lambda p:[peer.update({'import':'none'}) for peer in dev(p,'R1')['peers']])
     variant('inverted-decision',lambda p:p['policies'][1]['rules'][0].update(action='permit'))

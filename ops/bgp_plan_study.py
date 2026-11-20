@@ -9,14 +9,18 @@ from a1_intent_routing.run_lock import acquire
 from a1_intent_routing.verifiers import Evidence
 from a1_intent_routing.ollama_client import OllamaClient,metric_snapshot
 from a1_intent_routing.context import ContextGuard
-OUT=ROOT/'runs/bgp-plan-study-20261120'
+OUT=ROOT/'runs/bgp-plan-study-20261120-02'
 def sha(p):return hashlib.sha256(Path(p).read_bytes()).hexdigest()
 def files():
     paths=[]
     for pattern in ['src/a1_intent_routing/*.py','ops/bgp_plan*.py','prompts/bgp-plan-v1.txt','schemas/bgp-plan-v1.json','data/benchmark/**/*.json','data/benchmark/**/*.conf','labs/*/images.lock.json','scripts/lab.py','scripts/six_lab.py','scripts/batfish_health.py','scripts/count_context.py','configs/tokenizer.json','configs/one-pass-pilot.json','configs/batfish.json']:
         paths.extend(p for p in ROOT.glob(pattern) if p.is_file())
     paths.extend(p for parent in [OUT/'controls',OUT/'origination'] for p in parent.rglob('*') if p.is_file())
+    for group in ['controls','origination']:
+        for entry in json.loads((OUT/'definition.json').read_text())[group]:
+            paths.extend(Path(entry['configs']).glob('*.conf'))
     paths.extend([OUT/'definition.json',ROOT/'requirements/bgp-plan.txt'])
+    paths.extend(p for p in [OUT/'reuse.json',OUT/'reuse-evidence.json'] if p.exists())
     return {str(p.relative_to(ROOT)):sha(p) for p in sorted(set(paths))}
 def freeze():
     target=OUT/'manifest.json'
@@ -30,6 +34,10 @@ def check():
     manifest=json.loads((OUT/'manifest.json').read_text())
     for p,h in manifest['files'].items():
         if sha(ROOT/p)!=h:raise RuntimeError('Frozen input changed: '+p)
+    evidence=OUT/'reuse-evidence.json'
+    if evidence.exists():
+        for p,h in json.loads(evidence.read_text()).items():
+            if sha(ROOT/p)!=h:raise RuntimeError('Reused evidence changed: '+p)
     return manifest
 def restore(directory):
     directory.mkdir(parents=True,exist_ok=True)
@@ -82,7 +90,7 @@ def run(args):
                 if pause():return
                 directory=session/group/entry['label'];directory.parent.mkdir(parents=True,exist_ok=True)
                 cid=entry.get('case_id','dev_ebgp_prefix_01')
-                result=evaluate(ROOT,cid,entry['configs'],directory,diagnostic_connected=group=='origination' and entry.get('backing')=='connected')
+                result=evaluate(ROOT,cid,entry['configs'],directory,diagnostic_connected=group=='origination' and entry.get('backing')=='connected',diagnostic_static=group=='origination' and entry.get('backing')=='static')
                 if group=='origination' and any(r.get('tool')=='lab_ping_tester' for r in result.get('reports',[])):
                     _,t,_,_=load_case(ROOT,cid)
                     capture(t,directory/'diagnostics')
@@ -100,7 +108,7 @@ def run(args):
                 passed=result['status']==entry.get('expected',result['status'])
                 if group=='controls' and entry['variant']=='sender-allows-receiver-denies':
                     legacy=json.loads((directory/'legacy-result.json').read_text());passed=passed and legacy['status']=='pass'
-                state['completed'][key]={'status':result['status'],'calibrated':passed,'result':str(directory/'result.json')};save();print(key,result['status'],'calibrated',passed,flush=True)
+                state['completed'][key]={'status':result['status'],'calibrated':passed if group=='controls' else None,'result':str(directory/'result.json')};save();print(key,result['status'],'calibrated',passed,flush=True)
                 if group=='controls' and not passed:state['blocked']='Calibration control mismatch: '+key;save();return
         if not args.pilot:print('Calibration complete; pilot explicitly not requested');return
         if any(not v['calibrated'] for k,v in state['completed'].items() if k.startswith('controls/')):raise RuntimeError('Controls not calibrated')
