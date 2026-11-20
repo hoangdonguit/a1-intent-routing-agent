@@ -2,7 +2,7 @@
 
 ## Kết luận hiện tại
 
-Đã triển khai nhánh **hybrid opt-in**, chưa đổi raw-FRR mặc định và chưa có kết quả model mới. Hai control đúng do renderer tạo qua FRR parser/daemon và Batfish offline; control đảo policy fail đúng kỳ vọng. Control sender cho phép/receiver chặn vẫn pass bộ kiểm offline cũ, vì vậy phép kiểm export phía sender là bổ sung cần calibration thật, không được gọi là đã nghiệm thu chỉ nhờ unit test. Lab có root và pilot còn chờ launcher; không suy rằng model BGP02 phải pass mọi lần mới hoàn thành đồ án.
+Đã triển khai nhánh **hybrid opt-in**, chưa đổi raw-FRR mặc định và chưa có kết quả model mới. Hai control đúng do renderer tạo qua FRR parser/daemon và Batfish offline; control đảo policy fail đúng kỳ vọng. Control sender cho phép/receiver chặn vẫn pass bộ kiểm offline cũ, vì vậy phép kiểm export phía sender là bổ sung cần calibration thật, không được gọi là đã nghiệm thu chỉ nhờ unit test. Calibration root lần đầu đã chạy: hai positive full pass, ba negative fail đúng; một negative no-op bị phát hiện, giữ verdict pass và dừng trước model. Revision2 đã hoàn tất10/10control đúng kỳ vọng và restore pass; không suy rằng model BGP02 phải pass mọi lần mới hoàn thành đồ án.
 
 Nguồn: bản đã nộp `/home/xuandong/4_Ai_UngDung/Doan/docs/Group12_Proposal.pdf`, 3 trang, SHA256 `28cb9b5b018abad999c8775e1b3a1a357fea70cad08e9b3658bd46dcd5cf73a4`; đề `/home/xuandong/4_Ai_UngDung/Doan/docs/NT539.R11_DeTai_CuoiKy.pdf`, mục A1 và yêu cầu sản phẩm/rubric, SHA256 `518fac5a9aac95f0be10535635061086dbf41fa94e204074f326160fdf8b87bf`. Đã đọc lại toàn bộ proposal và phần đề liên quan. DOCX lịch sử không bổ sung cam kết. Proposal §1 không mặc định agent tốt hơn baseline; §3/7 coi 6–8B là mở rộng; Việt–Anh dev và B0 SyNET gốc vẫn là cam kết. Hybrid này là thử nghiệm mở rộng biểu diễn, không thay primary hay B0.
 
@@ -75,10 +75,41 @@ Mỗi phiên có ngân sách1800giây, không bắt đầu call nếu còn dư�
 
 | Hạng mục / nguồn | Chức năng đã triển khai | Tính đúng công cụ đã kiểm chứng | Hiệu quả model đo được |
 |---|---|---|---|
-| Origination (chẩn đoán A, hỗ trợ proposal §4/6) |8 biến thể, capture và provenance |Source/CLI/API có evidence; runtime contrasts chờ root |Không gọi model |
-| No-export (proposal §2/4, thử B) |Sender advertised + peer-bound OUT policy, grader riêng |Offline counterexample xác nhận điểm yếu legacy; full controls chờ root |Chưa đo với grader mới |
-| Sinh–kiểm chứng–sửa (A1 đề; proposal §4/5) |IR/renderer/short history/stagnation/checkpoint opt-in |186 tests +4 offline control; lab còn thiếu |0call hybrid, chưa có full pass hay repair gain mới |
+| Origination (chẩn đoán A, hỗ trợ proposal §4/6) |8 biến thể, capture và provenance |Source/CLI/API có evidence; 8runtime contrasts đã có RIB/advertisement; parser import-check chưa hỗ trợ |Không gọi model |
+| No-export (proposal §2/4, thử B) |Sender advertised + peer-bound OUT policy, grader riêng |Offline counterexample xác nhận điểm yếu legacy; 10/10control calibration đúng kỳ vọng |Chưa đo với grader mới |
+| Sinh–kiểm chứng–sửa (A1 đề; proposal §4/5) |IR/renderer/short history/stagnation/checkpoint opt-in |186 tests +4 offline control; lab controls đã đạt |0call hybrid tại mốc đóng calibration, chưa có full pass hay repair gain mới |
 | Thống kê pilot (proposal §5/6, phạm vi nhỏ mới) |Round/hash/token/time và mốc null |Summary kiểm tra; chưa có dữ liệu model |1repeat không đủ kết luận tổng quát/CI |
 | Sản phẩm cuối (đề; proposal §7) |Mã và launcher/report này |Fresh-host, demo/video, review bộ nộp còn thiếu |Không lấy model fail làm BLOCKED vô hạn |
 
 Sau tối đa6trajectory/26call kết thúc, báo cả negative và coverage/disagreement. Nếu có tín hiệu tốt thì mới chuẩn bị đối chứng đủ8dev trước freeze/chọn phương pháp; không mở eval trong đợt này. Nếu không, handoff lấy đúng một reproducer/payload/feedback/version, không chuyển toàn bộ lịch sử. Bảng nghiệm thu toàn đồ án vẫn ở [acceptance](../acceptance/README.md); các kết quả18/11 giữ nguyên, không được gọi là đã sửa engine hoặc đã nâng score.
+
+## Cập nhật sau calibration root và revision2
+
+Lần1 đã restore pass, model calls0. Positive BGP01/BGP02 **full pass với grader mới**; wrong-ASN, self-neighbor và missing-peer fail đúng. Negative missing-originate ban đầu nhắm R5 vốn không originate: cấu hình không thay đổi và pass. Đây là lỗi fixture của đợt này; không sửa verdict hoặc coi thành fail. Control thay thế xóa originate H3 ở R6, lưu output mới.
+
+Connected diagnostic gặp `ip link add lo` trong syntax namespace đã tồn tại; sửa syntax checker chỉ bỏ tạo dummy cho interface `lo`, vẫn thêm địa chỉ và kiểm tra daemon. Static diagnostic bị BGP-only scope chặn; revision2 chỉ cho static backing trong diagnostic này, không mở scope cho candidate pilot. Connected sau sửa qua syntax; assertion địa chỉ loopback ghi nhận thêm127.0.0.1/8 nên aggregate lab fail vẫn được giữ. Điều đó không xóa được evidence connected/main-RIB thực tế, và không được gọi full pass.
+
+Run bổ sung `runs/bgp-plan-study-20261120-02` giữ nguyên tám variant cấu hình, chỉ chấm lại connected/static vì execution trước không hợp lệ. Tái dùng5control đã đạt và4diagnostic absent/learned; hash3674file evidence, config và verdict được kiểm tra trước chạy. Manifest/output cũ giữ tại chỗ. `ops/bgp_plan_continue.py` ghi lý do thay đổi và retires control vô hiệu; renderer/schema/model/options/feedback không đổi. Launcher trong báo cáo hiện trỏ revision2. Không chạy lại campaign primary.
+
+[Bằng chứng RIB/advertisement đã trích](../../results/bgp-plan-study-20261120/origination-observed.json): ở absent-on, FRR có entry local không valid, không quảng bá; absent-off entry valid/best và quảng bá tới ba peer, main RIB R2 vẫn không có prefix. Batfish cả hai đều trả BGP BEST với next-hop discard và main RIB rỗng; parser báo không nhận cú pháp import-check. Learned-BGP/on có route học thực sự trong main RIB FRR nhưng BF chọn local discard và không có route main ở R2. Đây là quan sát runtime cụ thể, phù hợp đầu mối source unconditional network; chưa phải chứng minh mọi hành vi origination của binary. Giữ guardv5 và reproducer, không sửa snapshot để giả đồng thuận.
+
+Đã commit/push code `caf2dbf` và báo cáo đầu `2725b74` lên origin/main; revision2 sẽ có commit riêng sau checks. Bảy thay đổi staged ban đầu vẫn giữ nguyên blob. Các chỉnh sửa README/progress/troubleshooting/acceptance trên tài liệu làm việc cũ giữ local để tránh gom công việc khác vào commit này.
+
+### Đóng calibration revision2
+
+[Calibration summary](../../results/bgp-plan-study-20261120/calibration.json): **10/10control đúng kỳ vọng**, hai positive full pass và tám negative fail, đã restore pass. Có5control tái dùng hash-verified,5control mới; control no-op cũ không nằm trong mười control hợp lệ. Masked sender-allow/receiver-deny: legacy full pass, grader mới fail; R4 quảng bá192.168.2.0/24 tới10.6.3.1 và10.6.4.2, bound export policy OUT trả PERMIT. Đây là bằng chứng tính đúng phép kiểm mới, không phải hiệu quả model.
+
+| Nguồn / phần | Đã triển khai chức năng | Đã kiểm chứng công cụ | Hiệu quả model đo được |
+|---|---|---|---|
+| A origination / proposal§4/6 |8biến thể và captures |FRR runtime và BF RIB có tương phản; giữ parser/coverage/loopback assertion failures |Không áp dụng model |
+| B no-export / proposal§2/4 |Sender advertised + peer-bound OUT |Positive/negative và masked-import control đã qua calibration |Chưa đo model bằng grader mới |
+| C/D/E hybrid / mở rộng opt-in |IR/renderer/history/stagnation/session |186test +2test summary,9test mới chạy trong gói commit riêng;10control đúng |0call ở thời điểm đóng calibration; không tuyên bố repair gain |
+| Bàn giao cuối / đề và PDF§7 |Code/launcher/report/checkpoint |Fresh-host/demo-video/review bộ nộp chưa nghiệm thu |Pilot đủ6trajectory còn phải hoàn tất |
+
+Với cửa sổ mở máy còn ngắn, dùng một call rồi restore:
+
+```bash
+sudo runs/batfish-venv/bin/python ops/bgp_plan_study.py resume --pilot --seconds 1200 --calls 1
+```
+
+Đây chỉ là phần đầu pilot. Toàn bộ pilot có trần26call; nếu mỗi call dùng hết900giây thì riêng generation đã6,5giờ. Không tự chạy trọn số đó trong phiên mở máy này. Các phiên sau dùng launcher resume, vẫn trần2call/phiên và checkpoint chung, không sinh lại phần đã lưu.

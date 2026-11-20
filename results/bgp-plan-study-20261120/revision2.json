@@ -1,0 +1,13 @@
+{
+  "version": "bgp-plan-study-v2",
+  "source": "runs/bgp-plan-study-20261120",
+  "source_model_calls": 0,
+  "reused_controls": 5,
+  "reused_diagnostics": 4,
+  "reused_evidence_files": 3674,
+  "old_noop_negative_verdict": "pass",
+  "corrected_negative": "remove192.168.3.0/24 originate fromR6",
+  "corrected_negative_observed": "fail",
+  "reason": "Only connected/static diagnostic execution was invalid. Five passing no-lo controls and four diagnostic observations reused; old verdicts retained.",
+  "renderer_schema_model_options_changed": false
+}

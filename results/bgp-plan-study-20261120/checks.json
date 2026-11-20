@@ -4,6 +4,10 @@
   "summary_unobserved_rounds_null": "pass",
   "bash_syntax": "pass",
   "new_model_calls": 0,
-  "real_root_lab_calibration": "not_run_password_required",
-  "pilot": "not_run"
+  "real_root_lab_calibration": "pass",
+  "pilot": "not_measured_at_calibration_close",
+  "additional_persisted_summary_tests": 2,
+  "isolated_commit_tree_new_tests": 9,
+  "root_positive_controls_full_pass": 2,
+  "root_calibration": "10/10 controls expected; restore pass"
 }

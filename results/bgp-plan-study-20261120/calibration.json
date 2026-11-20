@@ -1,0 +1,400 @@
+{
+  "grader_version": "bgp-hybrid-export-v1",
+  "execution_revision": "bgp-plan-study-v2",
+  "controls": [
+    {
+      "control": "controls/dev_ebgp_prefix_01--positive",
+      "status": "pass",
+      "expected_matched": true,
+      "reused": true,
+      "result": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_01--positive/result.json",
+      "sha256": "83e1a29b702b089b94332c789fe3ce65fd05834e35eb5de697fbdbbc92af4f07",
+      "legacy_status": "pass",
+      "export_violations": []
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--positive",
+      "status": "pass",
+      "expected_matched": true,
+      "reused": true,
+      "result": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--positive/result.json",
+      "sha256": "bf044223c05966e3cb51b04a50dd8d37f35d59ddc400ea68064ebf2ccef13656",
+      "legacy_status": "pass",
+      "export_violations": []
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--wrong-asn",
+      "status": "fail",
+      "expected_matched": true,
+      "reused": true,
+      "result": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--wrong-asn/result.json",
+      "sha256": "30a411c2fae2d58f720d7f7fd31b5ede064f805232ade5dadd3c21c2b21fcf20",
+      "legacy_status": null,
+      "export_violations": []
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--self-neighbor",
+      "status": "fail",
+      "expected_matched": true,
+      "reused": true,
+      "result": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--self-neighbor/result.json",
+      "sha256": "5e1d448e7791c9bfbdfe755de6e1937f572eb1fa1aa7566e84ef08d7a131f5d6",
+      "legacy_status": null,
+      "export_violations": []
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--missing-peer",
+      "status": "fail",
+      "expected_matched": true,
+      "reused": true,
+      "result": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--missing-peer/result.json",
+      "sha256": "ae9b2f974cb51c663b14723a7c53a81fa54d0a3fb73b99bbefe93b676ddd814e",
+      "legacy_status": "fail",
+      "export_violations": [
+        {
+          "device": "R2",
+          "property": "advertised:10.6.7.2:192.168.2.0/24",
+          "observed": {
+            "peer_state": null
+          }
+        },
+        {
+          "device": "R5",
+          "property": "advertised:10.6.7.1:192.168.2.0/24",
+          "observed": {
+            "peer_state": "Active"
+          }
+        }
+      ]
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--missing-originate",
+      "status": "fail",
+      "expected_matched": true,
+      "reused": false,
+      "result": "runs/bgp-plan-study-20261120-02/session-1795145806439528528/controls/dev_ebgp_prefix_02--missing-originate/result.json",
+      "sha256": "6cf98cddf318bd29f8347a69193e73e165bc391e00092376562d2a21a7b9876c",
+      "legacy_status": "fail",
+      "export_violations": []
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--leak",
+      "status": "fail",
+      "expected_matched": true,
+      "reused": false,
+      "result": "runs/bgp-plan-study-20261120-02/session-1795145806439528528/controls/dev_ebgp_prefix_02--leak/result.json",
+      "sha256": "baa15d7d9eab02bb221ecf269250121a2e809db41c0fed0396a6637e23812e14",
+      "legacy_status": "fail",
+      "export_violations": [
+        {
+          "device": "R1",
+          "property": "advertised:10.6.1.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R2",
+          "property": "advertised:10.6.1.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R2",
+          "property": "advertised:10.6.2.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R3",
+          "property": "advertised:10.6.2.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R3",
+          "property": "advertised:10.6.3.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R4",
+          "property": "advertised:10.6.3.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R4",
+          "property": "export_policy:10.6.3.1:192.168.2.0/24",
+          "observed": "PERMIT"
+        },
+        {
+          "device": "R4",
+          "property": "advertised:10.6.4.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R4",
+          "property": "export_policy:10.6.4.2:192.168.2.0/24",
+          "observed": "PERMIT"
+        },
+        {
+          "device": "R5",
+          "property": "advertised:10.6.4.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R5",
+          "property": "advertised:10.6.5.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R6",
+          "property": "advertised:10.6.5.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R6",
+          "property": "advertised:10.6.6.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R1",
+          "property": "advertised:10.6.6.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R2",
+          "property": "advertised:10.6.7.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R5",
+          "property": "advertised:10.6.7.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        }
+      ]
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--unattached-policy",
+      "status": "fail",
+      "expected_matched": true,
+      "reused": false,
+      "result": "runs/bgp-plan-study-20261120-02/session-1795145806439528528/controls/dev_ebgp_prefix_02--unattached-policy/result.json",
+      "sha256": "717123594218077fba6c669cac5ce4fd75ad0dfcc0e3dc6c08a866d7f8bbc592",
+      "legacy_status": "fail",
+      "export_violations": []
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--inverted-decision",
+      "status": "fail",
+      "expected_matched": true,
+      "reused": false,
+      "result": "runs/bgp-plan-study-20261120-02/session-1795145806439528528/controls/dev_ebgp_prefix_02--inverted-decision/result.json",
+      "sha256": "9ac948d26aa2e6b3071a8916ed4a5dd6a444bfc6c59742fa182c4341dff4f5ac",
+      "legacy_status": "fail",
+      "export_violations": [
+        {
+          "device": "R1",
+          "property": "advertised:10.6.1.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R2",
+          "property": "advertised:10.6.1.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R2",
+          "property": "advertised:10.6.2.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R3",
+          "property": "advertised:10.6.2.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R3",
+          "property": "advertised:10.6.3.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R4",
+          "property": "advertised:10.6.3.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R4",
+          "property": "export_policy:10.6.3.1:192.168.2.0/24",
+          "observed": "PERMIT"
+        },
+        {
+          "device": "R4",
+          "property": "advertised:10.6.4.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R4",
+          "property": "export_policy:10.6.4.2:192.168.2.0/24",
+          "observed": "PERMIT"
+        },
+        {
+          "device": "R5",
+          "property": "advertised:10.6.4.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R5",
+          "property": "advertised:10.6.5.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R6",
+          "property": "advertised:10.6.5.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R6",
+          "property": "advertised:10.6.6.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R1",
+          "property": "advertised:10.6.6.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R2",
+          "property": "advertised:10.6.7.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R5",
+          "property": "advertised:10.6.7.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        }
+      ]
+    },
+    {
+      "control": "controls/dev_ebgp_prefix_02--sender-allows-receiver-denies",
+      "status": "fail",
+      "expected_matched": true,
+      "reused": false,
+      "result": "runs/bgp-plan-study-20261120-02/session-1795145806439528528/controls/dev_ebgp_prefix_02--sender-allows-receiver-denies/result.json",
+      "sha256": "923488cf47f9a3a6208065816270cea9e22e2f378536e3871302ff97c4c358d2",
+      "legacy_status": "pass",
+      "export_violations": [
+        {
+          "device": "R4",
+          "property": "advertised:10.6.3.1:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R4",
+          "property": "export_policy:10.6.3.1:192.168.2.0/24",
+          "observed": "PERMIT"
+        },
+        {
+          "device": "R4",
+          "property": "advertised:10.6.4.2:192.168.2.0/24",
+          "observed": {
+            "advertised": true,
+            "total": 3
+          }
+        },
+        {
+          "device": "R4",
+          "property": "export_policy:10.6.4.2:192.168.2.0/24",
+          "observed": "PERMIT"
+        }
+      ]
+    }
+  ],
+  "controls_expected_matched": 10,
+  "restoration": {
+    "status": "pass",
+    "path": "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-plan-study-20261120-02/session-1795145806439528528"
+  },
+  "pilot_calls_at_calibration_close": 0
+}

@@ -7,9 +7,9 @@
     "src/a1_intent_routing/bgp_plan.py": "48a7a3d484e9207307eb9d53ea7af82238cf49ad1702c02dcb1445494cccc630",
     "src/a1_intent_routing/bgp_plan_feedback.py": "4613b4adbb07d0c5c89c3a84038c63ef73e490177174a5cc332e993343b6eace",
     "src/a1_intent_routing/bgp_export.py": "563b000d85b4232aefd557fbb5bde4ce7af91f40924ee4b62ce29d2810ea127f",
-    "src/a1_intent_routing/bgp_hybrid_eval.py": "665af2df98b46b48c19c95f3733eef8c2129c8c9d5780618f4b09f9b2cb9db2a",
-    "ops/bgp_plan_study.py": "92372acf8f07a4e1207a9bc9f36977192b9cedeea16c2d04b3dae08f46490797",
-    "ops/bgp_plan_controls.py": "d4adf596a4e1e3072371f87e3a388b6fd5930f17af9123f43ba8ea484fac9d7e"
+    "src/a1_intent_routing/bgp_hybrid_eval.py": "06e26b2dd3016681e9080ba8f84f86eccd241e88e6806bccb7cafd7e53bd3e12",
+    "ops/bgp_plan_study.py": "b4e56c9c57b34c9429cd9c847c232821de82f3f02d0e863d6b72d682eeaf6743",
+    "ops/bgp_plan_controls.py": "649a84e206a9fa7ebe4e5f082a4d50a9547d5b2b52fd77bb09a84168a02d6046"
   },
   "model": {
     "name": "qwen3:4b-instruct-2507-q4_K_M",
@@ -25,7 +25,12 @@
     "repeat_penalty": 1.0
   },
   "stop_policy": "first pass/environment error/semantic cycle/5 repairs; no imputation",
-  "root_calibration": "pending",
+  "root_calibration": "10/10 controls expected; restore pass",
   "pilot_calls": 0,
-  "primary_updated": false
+  "primary_updated": false,
+  "execution_revision": "bgp-plan-study-v2",
+  "code_revision": "82dd9c0",
+  "local_manifest": "runs/bgp-plan-study-20261120-02/manifest.json",
+  "real_root_lab_calibration": "pass",
+  "pilot": "not_measured_at_calibration_close"
 }
