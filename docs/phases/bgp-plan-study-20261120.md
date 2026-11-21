@@ -4,7 +4,7 @@
 
 **Pilot đã hoàn tất6/6trajectory,6initial call,0repair.** Cả6 IR/schema và rendered FRR syntax đều pass; lab6/6fail; Batfish6/6origination coverageerror; verdict cuối0pass/0fail/6environment_error. Restorepass, không còn runner. Renderer và sender-export grader đã có10control đúng kỳ vọng, nhưng chưa có bằng chứng hybrid cải thiện intent success hoặc hiệu quả tự sửa. Không chạy lại cùng pilot để chọn đáp án đẹp; không mở thêm phiên bản prompt trong đợt này.
 
-**Nghiên cứu mới sau pilot:** public precheck đã có đối chứng offline; một A2 diagnostic đã thay14export attachments, bỏ được hai lỗi global export củaH1/H3, IR/syntaxpass. Batfish vẫncoverageerror và còn prefix/path violations; lab candidate mới đang chờ root. Đây không phải sửa lại score pilot.
+**Nghiên cứu mới sau pilot:** public precheck đã có đối chứng offline; một A2 diagnostic đã thay14export attachments, bỏ được hai lỗi global export củaH1/H3, IR/syntaxpass. Lab mới đã xác nhận hai chiềuH1↔H3 và hội tụ từfail sangpass, nhưng ròH2; finalcoverageerror và2bất đồngBF/lab. Đây không phải sửa lại score pilot.
 
 Kết quả này đóng đợt thử nghiệm, **không đồng nghĩa đồ án sẵn sàng nộp**. Chức năng đã triển khai, tính đúng của tool trên controls và hiệu quả model là ba cột riêng. Primary structured288/Vietnamese216/B0 không đổi.
 
@@ -197,3 +197,13 @@ bash ops/run_bgp_public_probe_lab.sh
 Plan/log/summary/restore ở `runs/bgp-public-repair-lab-20261121-01`. Khônggeneration; kiểm byteconfig khớpIR, hashes source/candidate/grader/public/oracle và syntax/precheck trước replay. Dùng nguyên grader syntax/scope/lab/Batfish/exportv1 vàcoveragev5, không lấy bên thuận lợi khi bất đồng. Caller giữ lablock; lockrejection không chạycleanup. Một lượt đãstarted bịtừchối retry tựđộng; preservepartialresults. `sudo -n true` hiện yêu cầu mật khẩu nên cần Terminal người dùng, không hỏi lại quyền sửafile.
 
 Bước tiếp theo saulab: đối chiếu lỗi đã hết/lỗi mới và regression, rồi mới chọn thiết kế thử nghiệm mới cho hai agent. Chưa mở đối chứng8dev, chưafreeze chọn hybrid, chưare-evaluate primary. Nếu chỉ sửa một phần, giữ cả trước/sau; không coi được14attachment là đạt toànintent.
+
+### Lab đã hoàn tất: reachability cải thiện, no-export hồi quy
+
+[Before/after cùngcase và evidence](../../results/bgp-public-precheck-20261121/lab-comparison.json): sau duy nhất1A2diagnostic, **cả hai chiềuH1↔H3 chuyểnfail→pass trên lab**, convergencefail→pass. Các lỗi lab prefixH1/H3 banđầu khôngcòn; lab cònfailprefixH2. Đây là sửa được chức năng thật trong candidate này, không chỉ làsyntax/IR đổiformat, nhưng **không phải fullpass hoặc hiệu quảA2 tổng quát**.
+
+Grader mới bắtregression: R4 quảngbá192.168.2.0/24 ra10.6.3.1 và10.6.4.2; mappedOUTpoliciesIR_p5/IR_p6 trảPERMIT. PrefixH2 lanqua nhiều phiên eBGP khác; không dùng kiểmtraRIBnhận đơnlẻ để suy exportđúng. Model dùng mapđangimport làmexport nhưng các map ởR4 chưa códenyH2. Trong khi đó R2 vẫnoriginatenetworkH3 khôngconnected, gây2bất đồng retained: `R2:prefix:192.168.3.0/24` và `traffic:0:reachability` (labpass/BFfail). Guardv5 vẫnE; không chọn bênpass hoặc xóa networkđểsửa snapshot.
+
+Verdict cuối candidate mới **environment_error**, labfail, exportfail; sourcegrader/schema/model/options và sốliệu cũ khôngđổi. Rootlabevaluation1, generationstage này0, restorepass. Tổng nghiên cứu mới vẫnchỉ1call model; không sinh thêm đểchọn kếtquả. Bộ213unit/contracttests đãpass trước replay; hashplan/sourceđược kiểmtrước ápconfig.
+
+Hướng sửa tiếp đã địnhvị cụthể: bảo toàn hai flow H1/H3 đãpass, sửa no-exportH2 ởcác exportbinding/policy thực sự ởR4(p5/p6), và xử lý coverage của networkH3 tạiR2 ở phiên bản/phạm vi phương pháp mới. Không tựcấm mọi nonconnectednetwork hoặc đểrenderer sửađápán. Trước mộtcall model tiếp theo phải chốt cách phânbiệt lỗi policyđãcó lab/advertisementproof với coverageunsupported; final vẫnE khi mandatorycoveragechưađủ. Chưa mở thêmcall, chưađổi prompt hoặccontroller sau khi xem kếtquả này.

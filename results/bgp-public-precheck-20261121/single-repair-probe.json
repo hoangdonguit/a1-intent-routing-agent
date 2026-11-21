@@ -188,5 +188,7 @@
   ],
   "model_options_unchanged": true,
   "grader": "existing Batfish v5 unchanged; mandatory lab/export replay pending",
-  "lab_launcher": "bash ops/run_bgp_public_probe_lab.sh"
+  "lab_launcher": "bash ops/run_bgp_public_probe_lab.sh",
+  "subsequent_lab_report": "lab-comparison.json",
+  "subsequent_lab_outcome": "H1/H3 reachability and convergence improved; H2 export regression; coverage/disagreements retained; restore pass"
 }

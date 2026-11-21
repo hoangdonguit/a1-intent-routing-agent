@@ -1,0 +1,381 @@
+{
+  "version": "bgp-public-repair-lab-comparison-v1",
+  "scope": "one saved-initial A2 diagnostic, no new method-level comparison",
+  "before": {
+    "result": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_02--A2/round-0/evaluation/result.json",
+    "sha256": "6ee6e4c30f336fe10fb3a5a07698ce4031431fa4b20807ce80fd9ea4276db27b",
+    "lab_status": "fail",
+    "reachability": [
+      {
+        "device": "H1",
+        "property": "intent.reachability",
+        "property_id": "traffic:0:reachability",
+        "status": "fail"
+      },
+      {
+        "device": "H3",
+        "property": "intent.reachability",
+        "property_id": "traffic:1:reachability",
+        "status": "fail"
+      }
+    ],
+    "convergence": "fail"
+  },
+  "after": {
+    "result": "runs/bgp-public-repair-lab-20261121-01/replay/result.json",
+    "sha256": "430f98d08cf76e231b65109c490fc67cc7e0a2751940e59a119b7e161a911925",
+    "status": "environment_error",
+    "tools": {
+      "syntax_checker": "pass",
+      "protocol_scope": "pass",
+      "lab_ping_tester": "fail",
+      "batfish_verifier": "environment_error",
+      "bgp_export_tester": "fail"
+    },
+    "reachability": [
+      {
+        "device": "H1",
+        "property": "intent.reachability",
+        "property_id": "traffic:0:reachability",
+        "status": "pass"
+      },
+      {
+        "device": "H3",
+        "property": "intent.reachability",
+        "property_id": "traffic:1:reachability",
+        "status": "pass"
+      }
+    ],
+    "convergence": "pass",
+    "remaining_lab_failures": [
+      {
+        "device": "R1",
+        "property": "prefix:192.168.2.0/24",
+        "status": "fail"
+      },
+      {
+        "device": "R2",
+        "property": "prefix:192.168.2.0/24",
+        "status": "fail"
+      },
+      {
+        "device": "R3",
+        "property": "prefix:192.168.2.0/24",
+        "status": "fail"
+      },
+      {
+        "device": "R5",
+        "property": "prefix:192.168.2.0/24",
+        "status": "fail"
+      },
+      {
+        "device": "R6",
+        "property": "prefix:192.168.2.0/24",
+        "status": "fail"
+      }
+    ],
+    "export_violations": [
+      {
+        "device": "R2",
+        "property": "advertised:10.6.2.2:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0018-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0017-command.json"
+        ]
+      },
+      {
+        "device": "R3",
+        "property": "advertised:10.6.2.1:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0020-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0019-command.json"
+        ]
+      },
+      {
+        "device": "R3",
+        "property": "advertised:10.6.3.2:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0022-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0021-command.json"
+        ]
+      },
+      {
+        "device": "R4",
+        "property": "advertised:10.6.3.1:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0024-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0023-command.json"
+        ]
+      },
+      {
+        "device": "R4",
+        "property": "export_policy:10.6.3.1:192.168.2.0/24",
+        "observed": "PERMIT",
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/bf-peer-bindings.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/policy-R4-10.6.3.1-H2.json"
+        ]
+      },
+      {
+        "device": "R4",
+        "property": "advertised:10.6.4.2:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0026-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0025-command.json"
+        ]
+      },
+      {
+        "device": "R4",
+        "property": "export_policy:10.6.4.2:192.168.2.0/24",
+        "observed": "PERMIT",
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/bf-peer-bindings.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/policy-R4-10.6.4.2-H2.json"
+        ]
+      },
+      {
+        "device": "R5",
+        "property": "advertised:10.6.4.1:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0028-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0027-command.json"
+        ]
+      },
+      {
+        "device": "R5",
+        "property": "advertised:10.6.5.2:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0030-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0029-command.json"
+        ]
+      },
+      {
+        "device": "R6",
+        "property": "advertised:10.6.5.1:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0032-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0031-command.json"
+        ]
+      },
+      {
+        "device": "R6",
+        "property": "advertised:10.6.6.2:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0034-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0033-command.json"
+        ]
+      },
+      {
+        "device": "R1",
+        "property": "advertised:10.6.6.1:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0036-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0035-command.json"
+        ]
+      },
+      {
+        "device": "R2",
+        "property": "advertised:10.6.7.2:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0038-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0037-command.json"
+        ]
+      },
+      {
+        "device": "R5",
+        "property": "advertised:10.6.7.1:192.168.2.0/24",
+        "observed": {
+          "advertised": true,
+          "total": 8
+        },
+        "evidence": [
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0040-command.json",
+          "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/export/0039-command.json"
+        ]
+      }
+    ],
+    "disagreements": [
+      {
+        "property_id": "R2:prefix:192.168.3.0/24",
+        "observations": [
+          {
+            "device": "R2",
+            "property": "prefix:192.168.3.0/24",
+            "expected": {
+              "node": "R2",
+              "prefix": "192.168.3.0/24",
+              "present": true,
+              "protocol": "bgp"
+            },
+            "observed": [
+              {
+                "protocol": "bgp",
+                "selected": true,
+                "destSelected": true,
+                "distance": 20,
+                "metric": 0,
+                "installed": true,
+                "nexthopGroupId": 16,
+                "vrfId": 0,
+                "vrfName": "default",
+                "uptime": "00:00:08",
+                "prefix": "192.168.3.0/24",
+                "prefixLen": 24,
+                "table": 254,
+                "internalStatus": 16,
+                "internalFlags": 8,
+                "internalNextHopNum": 1,
+                "internalNextHopActiveNum": 1,
+                "internalNextHopFibInstalledNum": 1,
+                "installedNexthopGroupId": 16,
+                "receivedNexthopGroupId": 16,
+                "nexthops": [
+                  {
+                    "flags": 3,
+                    "fib": true,
+                    "ip": "10.6.1.1",
+                    "afi": "ipv4",
+                    "interfaceIndex": 161,
+                    "interfaceName": "eth1",
+                    "active": true,
+                    "weight": 1
+                  }
+                ]
+              }
+            ],
+            "evidence": [
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/0069-command.json"
+            ],
+            "status": "pass",
+            "property_id": "R2:prefix:192.168.3.0/24",
+            "tool": "lab_ping_tester"
+          },
+          {
+            "device": "R2",
+            "property": "prefix:192.168.3.0/24",
+            "expected": {
+              "node": "R2",
+              "prefix": "192.168.3.0/24",
+              "present": true,
+              "protocol": "bgp"
+            },
+            "observed": [],
+            "status": "fail",
+            "evidence": [
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/batfish/routes-7.json"
+            ],
+            "property_id": "R2:prefix:192.168.3.0/24",
+            "tool": "batfish_verifier"
+          }
+        ]
+      },
+      {
+        "property_id": "traffic:0:reachability",
+        "observations": [
+          {
+            "device": "H1",
+            "property": "intent.reachability",
+            "expected": true,
+            "observed": {
+              "directed_delivery": true,
+              "received_probes": 2,
+              "round_trip_ping": {
+                "sent": 2,
+                "received": 2,
+                "reachable": true
+              }
+            },
+            "evidence": [
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/0079-command.json",
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/packet-paths-0.json",
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/packet-captures/flow-0/R1.json",
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/packet-captures/flow-0/R2.json",
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/packet-captures/flow-0/R3.json",
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/packet-captures/flow-0/R4.json",
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/packet-captures/flow-0/R5.json",
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/packet-captures/flow-0/R6.json",
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/lab/packet-captures/flow-0/H3.json"
+            ],
+            "status": "pass",
+            "property_id": "traffic:0:reachability",
+            "tool": "lab_ping_tester"
+          },
+          {
+            "device": "H1",
+            "property": "traffic:0:reachability",
+            "expected": true,
+            "observed": false,
+            "status": "fail",
+            "evidence": [
+              "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-public-repair-lab-20261121-01/replay/batfish/reachability-8.json"
+            ],
+            "property_id": "traffic:0:reachability",
+            "tool": "batfish_verifier"
+          }
+        ]
+      }
+    ]
+  },
+  "restore": "pass",
+  "new_lab_evaluations": 1,
+  "new_lab_stage_generation_calls": 0,
+  "new_research_generation_calls_total": 1,
+  "primary_updated": false,
+  "full_verified_pass": false,
+  "next_targets": [
+    {
+      "property": "deny_export_H2",
+      "location": "R4 export policies p5/p6; bound IR_p5/IR_p6 on peers10.6.3.1/10.6.4.2",
+      "proof": "actual advertised-routes and mapped Batfish OUT policy PERMIT; lab prefix assertion fails"
+    },
+    {
+      "property": "origination_coverage",
+      "location": "R2 network192.168.3.0/24",
+      "proof": "guardv5 plus2lab/Batfish disagreements; retain coverage error, do not delete/rewrite candidate in grader"
+    }
+  ]
+}
