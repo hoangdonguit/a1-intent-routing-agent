@@ -1,0 +1,647 @@
+{
+  "version": "bgp-public-necessary-v1",
+  "scope": "offline saved-IR research only; necessary checks, never full pass",
+  "profile": "frr-10.7.1-traditional-requires-policy-v1",
+  "image_reference": "quay.io/frrouting/frr:10.7.1@sha256:e995beaa50fdc9edb35eadcfefa29b7f062cc06f2b812613789b68fa541554d2",
+  "image_id": "sha256:27be65e6d6382c092d5ec87105eb8d38bee9e257e21963289623b24ceb3c99cd",
+  "profile_evidence": [
+    {
+      "path": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--positive/syntax/0017-command.json",
+      "sha256": "66def12052f8fdf7594a9e9990ed275f4450a4f11011e525674027b2bc0d794e"
+    },
+    {
+      "path": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--positive/syntax/0034-command.json",
+      "sha256": "679e75fae836c32cc8de51ea6fb389abb0b810655ebbd59bd879734289a97ab3"
+    },
+    {
+      "path": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--positive/syntax/0048-command.json",
+      "sha256": "19ba293ff49301d529ad8261d79ae70bce7f3a04ef392d7a2196cbd1f08110e7"
+    },
+    {
+      "path": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--positive/syntax/0065-command.json",
+      "sha256": "a40f57602bf0e3f6251f377333a4c57cc08b6e87dcb70c30e49d012d20f8aedf"
+    },
+    {
+      "path": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--positive/syntax/0082-command.json",
+      "sha256": "e56325493425ff363b1c28173f1ddfc705033478e8da97a1503a798f911955df"
+    },
+    {
+      "path": "runs/bgp-plan-study-20261120/session-1795144526823463443/controls/dev_ebgp_prefix_02--positive/syntax/0099-command.json",
+      "sha256": "a5005b52737d73ff1065e8894e6174553e17f625d92738ec2a3b543dae4e5f66"
+    }
+  ],
+  "files": {
+    "src/a1_intent_routing/bgp_public_precheck.py": "cee6a815b4660f18cde1683e17f6b7c16a6152394676f053afac84e4f1fcb2c2",
+    "src/a1_intent_routing/bgp_public_feedback.py": "47bdd3d5ba1b22eac6f36e86fa154e9937c5fb7c39d6f9883d1d640da9f7cd98",
+    "src/a1_intent_routing/bgp_plan.py": "48a7a3d484e9207307eb9d53ea7af82238cf49ad1702c02dcb1445494cccc630",
+    "ops/research_bgp_public_precheck.py": "303437c2d7d9c0a5c4f7cd3405b7d22ae0db0da40c02bdb51bd99711dd0ecdac"
+  },
+  "rows": [
+    {
+      "label": "dev_ebgp_prefix_01--positive",
+      "case_id": "dev_ebgp_prefix_01",
+      "kind": "control",
+      "variant": "positive",
+      "status": "pass",
+      "errors": [],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_01--positive/plan.json",
+      "source_ir_sha256": "005c36283cc9be396f9b32da29a4f74a9a0c3a2317797ee3451b260524fab8ee",
+      "legacy_result_sha256": "83e1a29b702b089b94332c789fe3ce65fd05834e35eb5de697fbdbbc92af4f07",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_01--positive/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--positive",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "positive",
+      "status": "pass",
+      "errors": [],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_02--positive/plan.json",
+      "source_ir_sha256": "50033dc76527aa9ac8bc08e85b36e5534065b1894d5ebf7bf1eb733126de5047",
+      "legacy_result_sha256": "bf044223c05966e3cb51b04a50dd8d37f35d59ddc400ea68064ebf2ccef13656",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--positive/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--wrong-asn",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "wrong-asn",
+      "status": "fail",
+      "errors": [
+        {
+          "device": "R2",
+          "property": "fixed_asn",
+          "object_ids": [
+            "R2"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_02--wrong-asn/plan.json",
+      "source_ir_sha256": "5b175ed5e6d90beb61648713f23bb197ab2b401b78654e54c68d46c229350338",
+      "legacy_result_sha256": "30a411c2fae2d58f720d7f7fd31b5ede064f805232ade5dadd3c21c2b21fcf20",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--wrong-asn/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--self-neighbor",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "self-neighbor",
+      "status": "fail",
+      "errors": [
+        {
+          "device": "R1",
+          "property": "required_peer:10.6.1.2",
+          "object_ids": [
+            "R1"
+          ]
+        },
+        {
+          "device": "R1",
+          "property": "self_neighbor:10.6.1.1",
+          "object_ids": [
+            "R1",
+            "R1_R2"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_02--self-neighbor/plan.json",
+      "source_ir_sha256": "0efb08e1cba3f83680456c7abc229e8b334976204165e58d53339e0d091392e6",
+      "legacy_result_sha256": "5e1d448e7791c9bfbdfe755de6e1937f572eb1fa1aa7566e84ef08d7a131f5d6",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--self-neighbor/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--missing-peer",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "missing-peer",
+      "status": "fail",
+      "errors": [
+        {
+          "device": "R2",
+          "property": "required_peer:10.6.7.2",
+          "object_ids": [
+            "R2"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_02--missing-peer/plan.json",
+      "source_ir_sha256": "c0f8508d5360246ba398a0cf949a2cba7d6329bc6bd2e60690c4c20bec5aac14",
+      "legacy_result_sha256": "ae9b2f974cb51c663b14723a7c53a81fa54d0a3fb73b99bbefe93b676ddd814e",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--missing-peer/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--missing-originate",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "missing-originate",
+      "status": "fail",
+      "errors": [
+        {
+          "device": null,
+          "property": "required_network:192.168.3.0/24",
+          "object_ids": []
+        }
+      ],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120-02/controls/dev_ebgp_prefix_02--missing-originate/plan.json",
+      "source_ir_sha256": "b02e90a51804b5e92ecd3dc71c8cf7b6df00a4342b76f9a2fece79050dad2114",
+      "legacy_result_sha256": "6cf98cddf318bd29f8347a69193e73e165bc391e00092376562d2a21a7b9876c",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--missing-originate/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--leak",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "leak",
+      "status": "pass",
+      "errors": [],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_02--leak/plan.json",
+      "source_ir_sha256": "005c36283cc9be396f9b32da29a4f74a9a0c3a2317797ee3451b260524fab8ee",
+      "legacy_result_sha256": "baa15d7d9eab02bb221ecf269250121a2e809db41c0fed0396a6637e23812e14",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--leak/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--unattached-policy",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "unattached-policy",
+      "status": "fail",
+      "errors": [
+        {
+          "device": "R1",
+          "property": "all_local_imports_blocked:192.168.3.0/24",
+          "object_ids": [
+            "R1",
+            "R1_R2",
+            "R1_R6"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_02--unattached-policy/plan.json",
+      "source_ir_sha256": "ba88daba92660c6467c973b7816673885f0691d3c70c72e0bfd7a1818db42eb5",
+      "legacy_result_sha256": "717123594218077fba6c669cac5ce4fd75ad0dfcc0e3dc6c08a866d7f8bbc592",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--unattached-policy/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--inverted-decision",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "inverted-decision",
+      "status": "pass",
+      "errors": [],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_02--inverted-decision/plan.json",
+      "source_ir_sha256": "6e211adc0f33554d14452b0f5b75988d4d39cdcaba251b4d65e1c7c26e76f63d",
+      "legacy_result_sha256": "9ac948d26aa2e6b3071a8916ed4a5dd6a444bfc6c59742fa182c4341dff4f5ac",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--inverted-decision/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--sender-allows-receiver-denies",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "control",
+      "variant": "sender-allows-receiver-denies",
+      "status": "pass",
+      "errors": [],
+      "nonconnected_warning_count": 0,
+      "source_ir": "runs/bgp-plan-study-20261120/controls/dev_ebgp_prefix_02--sender-allows-receiver-denies/plan.json",
+      "source_ir_sha256": "a516bf8c8ab4d4bdaf5a451ed18208563c732445de4b20e9f353710edd9c9582",
+      "legacy_result_sha256": "923488cf47f9a3a6208065816270cea9e22e2f378536e3871302ff97c4c358d2",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--sender-allows-receiver-denies/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_01--B1--round-0",
+      "case_id": "dev_ebgp_prefix_01",
+      "kind": "saved_model",
+      "variant": null,
+      "status": "fail",
+      "errors": [
+        {
+          "device": "R5",
+          "property": "required_peer:10.6.7.1",
+          "object_ids": [
+            "R5"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.1.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.2.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.3.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 1,
+      "source_ir": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--B1/round-0/ir.json",
+      "source_ir_sha256": "84f8ae4e9f7501342ff390a50c325f4e3d044c1dc8e5ca152f675e1a1a5158d1",
+      "legacy_result_sha256": "d9691d37899ee3221af722c972b9eee2580caea47f15d8dd696749c7cbc92b4a",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_01--B1--round-0/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_01--A1--round-0",
+      "case_id": "dev_ebgp_prefix_01",
+      "kind": "saved_model",
+      "variant": null,
+      "status": "fail",
+      "errors": [
+        {
+          "device": "R5",
+          "property": "required_peer:10.6.7.1",
+          "object_ids": [
+            "R5"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.1.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.2.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.3.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 1,
+      "source_ir": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--A1/round-0/ir.json",
+      "source_ir_sha256": "84f8ae4e9f7501342ff390a50c325f4e3d044c1dc8e5ca152f675e1a1a5158d1",
+      "legacy_result_sha256": "c53d04b0b86507ebdc381c91f9ea017408f335c214d7347c1cad5b0d02dd4388",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_01--A1--round-0/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_01--A2--round-0",
+      "case_id": "dev_ebgp_prefix_01",
+      "kind": "saved_model",
+      "variant": null,
+      "status": "fail",
+      "errors": [
+        {
+          "device": "R5",
+          "property": "required_peer:10.6.7.1",
+          "object_ids": [
+            "R5"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.1.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.2.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.3.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 1,
+      "source_ir": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--A2/round-0/ir.json",
+      "source_ir_sha256": "84f8ae4e9f7501342ff390a50c325f4e3d044c1dc8e5ca152f675e1a1a5158d1",
+      "legacy_result_sha256": "7c284ace4a1d165378bed82636775dde4099f2fb3fead1126ce16b88c50e0b9f",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_01--A2--round-0/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--B1--round-0",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "saved_model",
+      "variant": null,
+      "status": "fail",
+      "errors": [
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.1.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R2",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.3.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R2",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 1,
+      "source_ir": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_02--B1/round-0/ir.json",
+      "source_ir_sha256": "f9b8db8a941dae70d4a999be601b90c4b33587a7cbc79dbc2b0da157b8f0e66f",
+      "legacy_result_sha256": "7aa6e6d985e9b1ba6f4700582c992f4586c6aa101e9c3b1479c60a1f54ee5c0f",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--B1--round-0/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--A1--round-0",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "saved_model",
+      "variant": null,
+      "status": "fail",
+      "errors": [
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.1.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R2",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.3.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R2",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 1,
+      "source_ir": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_02--A1/round-0/ir.json",
+      "source_ir_sha256": "38cb2c7d18060ed14b24a508476a375379333cf3bd8b7c2e9b5723b5da2828be",
+      "legacy_result_sha256": "30440cb54cf6fb38b49b72a6959d56c89f1ced0bbf6ac6c73195e7b77a9d74cf",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--A1--round-0/precheck.json",
+      "candidate_bytes_preserved": true
+    },
+    {
+      "label": "dev_ebgp_prefix_02--A2--round-0",
+      "case_id": "dev_ebgp_prefix_02",
+      "kind": "saved_model",
+      "variant": null,
+      "status": "fail",
+      "errors": [
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.1.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R2",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        },
+        {
+          "device": null,
+          "property": "all_export_blocked:192.168.3.0/24",
+          "object_ids": [
+            "R2",
+            "R6",
+            "R1",
+            "R3",
+            "R5",
+            "R2",
+            "R4",
+            "R3",
+            "R5",
+            "R4",
+            "R2",
+            "R6",
+            "R5",
+            "R1"
+          ]
+        }
+      ],
+      "nonconnected_warning_count": 1,
+      "source_ir": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_02--A2/round-0/ir.json",
+      "source_ir_sha256": "38cb2c7d18060ed14b24a508476a375379333cf3bd8b7c2e9b5723b5da2828be",
+      "legacy_result_sha256": "6ee6e4c30f336fe10fb3a5a07698ce4031431fa4b20807ce80fd9ea4276db27b",
+      "report": "runs/bgp-public-precheck-20261121-02/dev_ebgp_prefix_02--A2--round-0/precheck.json",
+      "candidate_bytes_preserved": true
+    }
+  ],
+  "positive_control_non_rejection": "2/2",
+  "in_scope_negative_detection": "5/5",
+  "outside_scope_negative_controls": "3/3 passed precheck, still fail mandatory legacy/export verifier",
+  "saved_model_proven_failure": "6/6",
+  "feedback_sent_to_model": false,
+  "new_generation_calls": 0,
+  "new_lab_evaluations": 0,
+  "changed_historical_verdicts": false,
+  "checks": {
+    "existing_plus_precheck_unit_tests": 207,
+    "single_call_guard_tests": 3,
+    "single_call_guard_status": "pass",
+    "full_suite_after_all_new_changes": 213,
+    "full_suite_status": "pass",
+    "root_replay_guards": 3
+  }
+}

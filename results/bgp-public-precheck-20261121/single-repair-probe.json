@@ -1,0 +1,192 @@
+{
+  "version": "bgp-public-A2-single-probe-v1",
+  "status": "environment_error",
+  "gate": "batfish",
+  "new_generation_calls": 1,
+  "full_verified_pass": false,
+  "lab": "not_run",
+  "primary_updated": false,
+  "metrics": {
+    "input_tokens": 5138,
+    "output_tokens": 1767,
+    "api_total_seconds": 361.603436459,
+    "api_load_seconds": 0.000971819,
+    "api_prompt_eval_seconds": 2.306447,
+    "api_eval_seconds": 359.278448
+  },
+  "unavailable": {},
+  "http_seconds": 361.6042363260003,
+  "raw_ir_valid": true,
+  "semantic_changed": true,
+  "precheck_status": "pass",
+  "precheck_errors": [],
+  "source_target_errors": [
+    "all_export_blocked:192.168.1.0/24",
+    "all_export_blocked:192.168.3.0/24"
+  ],
+  "removed_target_errors": [
+    "all_export_blocked:192.168.1.0/24",
+    "all_export_blocked:192.168.3.0/24"
+  ],
+  "rendered_syntax_status": "pass",
+  "batfish_status": "environment_error",
+  "batfish_error_properties": [
+    "bgp_origination_coverage",
+    "prefix:192.168.2.0/24",
+    "prefix:192.168.3.0/24",
+    "traffic:0:path",
+    "traffic:0:reachability"
+  ],
+  "measured_probe_seconds": 370.67054244799965,
+  "artifacts": "runs/bgp-public-repair-probe-20261121-02",
+  "plan_sha256": "035418161e66c44f0a5755f30f5326cd41be5d8b6d06a8b41bc5f842d156777d",
+  "request_sha256": "aec3e4c7521edf18fdb8ebdc68aedf146097af7ff9dda224c72f6ecb30446461",
+  "raw_response_sha256": "3ff4b794d22c24a0eef134fca65a7c30d524358e26fb01e5d9d0c987473fe9c2",
+  "candidate_hashes": {
+    "R3.conf": "85e63bc79c7a7b5b43f3d0754b30f2b577cbd1320bfc9321b0d6084c0cd0bc48",
+    "R2.conf": "c06db3bbaf8a50710f68dd085fed4546cdabeab97cde57df7731b530eaa904a9",
+    "R1.conf": "348d4aca8a8f1c7339b74db078fbf79f78042366aa353f936f864b775bc83cf7",
+    "R5.conf": "2f848946857f5f0b634da6517a7ce60cbf1a14026360d9ab033c2d990c3b2ca0",
+    "R4.conf": "463588a9b745a40532eab9a314218aa8196295fe2fdbd5bc7c7781d20d02e88b",
+    "R6.conf": "75faa3640f04bce4fa7a33013013db904e1fb33df5e0ea606408650e87545bc8"
+  },
+  "decision_changes": [
+    {
+      "device": "R1",
+      "peer_id": "R2",
+      "address": "10.6.1.2",
+      "field": "export",
+      "before": "none",
+      "after": "p1"
+    },
+    {
+      "device": "R1",
+      "peer_id": "R6",
+      "address": "10.6.6.1",
+      "field": "export",
+      "before": "none",
+      "after": "p2"
+    },
+    {
+      "device": "R1",
+      "field": "originate",
+      "before": [
+        "192.168.1.0/24"
+      ],
+      "after": [
+        "192.168.1.0/24",
+        "10.6.6.0/30"
+      ]
+    },
+    {
+      "device": "R2",
+      "peer_id": "R1",
+      "address": "10.6.1.1",
+      "field": "export",
+      "before": "none",
+      "after": "p1"
+    },
+    {
+      "device": "R2",
+      "peer_id": "R3",
+      "address": "10.6.2.2",
+      "field": "export",
+      "before": "none",
+      "after": "p3"
+    },
+    {
+      "device": "R2",
+      "peer_id": "R5",
+      "address": "10.6.7.2",
+      "field": "export",
+      "before": "none",
+      "after": "p4"
+    },
+    {
+      "device": "R3",
+      "peer_id": "R2",
+      "address": "10.6.2.1",
+      "field": "export",
+      "before": "none",
+      "after": "p3"
+    },
+    {
+      "device": "R3",
+      "peer_id": "R4",
+      "address": "10.6.3.2",
+      "field": "export",
+      "before": "none",
+      "after": "p5"
+    },
+    {
+      "device": "R4",
+      "peer_id": "R3",
+      "address": "10.6.3.1",
+      "field": "export",
+      "before": "none",
+      "after": "p5"
+    },
+    {
+      "device": "R4",
+      "peer_id": "R5",
+      "address": "10.6.4.2",
+      "field": "export",
+      "before": "none",
+      "after": "p6"
+    },
+    {
+      "device": "R5",
+      "peer_id": "R4",
+      "address": "10.6.4.1",
+      "field": "export",
+      "before": "none",
+      "after": "p6"
+    },
+    {
+      "device": "R5",
+      "peer_id": "R2",
+      "address": "10.6.7.1",
+      "field": "export",
+      "before": "none",
+      "after": "p4"
+    },
+    {
+      "device": "R5",
+      "peer_id": "R6",
+      "address": "10.6.5.2",
+      "field": "export",
+      "before": "none",
+      "after": "p7"
+    },
+    {
+      "device": "R6",
+      "peer_id": "R5",
+      "address": "10.6.5.1",
+      "field": "export",
+      "before": "none",
+      "after": "p7"
+    },
+    {
+      "device": "R6",
+      "peer_id": "R1",
+      "address": "10.6.6.2",
+      "field": "export",
+      "before": "none",
+      "after": "p2"
+    },
+    {
+      "device": "R6",
+      "field": "originate",
+      "before": [
+        "192.168.3.0/24"
+      ],
+      "after": [
+        "192.168.3.0/24",
+        "10.6.6.0/30"
+      ]
+    }
+  ],
+  "model_options_unchanged": true,
+  "grader": "existing Batfish v5 unchanged; mandatory lab/export replay pending",
+  "lab_launcher": "bash ops/run_bgp_public_probe_lab.sh"
+}

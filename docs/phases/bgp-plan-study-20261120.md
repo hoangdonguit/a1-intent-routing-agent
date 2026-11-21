@@ -4,6 +4,8 @@
 
 **Pilot đã hoàn tất6/6trajectory,6initial call,0repair.** Cả6 IR/schema và rendered FRR syntax đều pass; lab6/6fail; Batfish6/6origination coverageerror; verdict cuối0pass/0fail/6environment_error. Restorepass, không còn runner. Renderer và sender-export grader đã có10control đúng kỳ vọng, nhưng chưa có bằng chứng hybrid cải thiện intent success hoặc hiệu quả tự sửa. Không chạy lại cùng pilot để chọn đáp án đẹp; không mở thêm phiên bản prompt trong đợt này.
 
+**Nghiên cứu mới sau pilot:** public precheck đã có đối chứng offline; một A2 diagnostic đã thay14export attachments, bỏ được hai lỗi global export củaH1/H3, IR/syntaxpass. Batfish vẫncoverageerror và còn prefix/path violations; lab candidate mới đang chờ root. Đây không phải sửa lại score pilot.
+
 Kết quả này đóng đợt thử nghiệm, **không đồng nghĩa đồ án sẵn sàng nộp**. Chức năng đã triển khai, tính đúng của tool trên controls và hiệu quả model là ba cột riêng. Primary structured288/Vietnamese216/B0 không đổi.
 
 Nguồn: bản đã nộp `/home/xuandong/4_Ai_UngDung/Doan/docs/Group12_Proposal.pdf`, 3 trang, SHA256 `28cb9b5b018abad999c8775e1b3a1a357fea70cad08e9b3658bd46dcd5cf73a4`; đề `/home/xuandong/4_Ai_UngDung/Doan/docs/NT539.R11_DeTai_CuoiKy.pdf`, mục A1 và yêu cầu sản phẩm/rubric, SHA256 `518fac5a9aac95f0be10535635061086dbf41fa94e204074f326160fdf8b87bf`. Đã đọc lại toàn bộ proposal và phần đề liên quan. DOCX lịch sử không bổ sung cam kết. Proposal §1 không mặc định agent tốt hơn baseline; §3/7 coi 6–8B là mở rộng; Việt–Anh dev và B0 SyNET gốc vẫn là cam kết. Hybrid này là thử nghiệm mở rộng biểu diễn, không thay primary hay B0.
@@ -162,3 +164,36 @@ Ba điểm kết luận:
 - Hai ý tưởng cần thiết kế/phê duyệt như **phương pháp phiên bản mới**, chưa triển khai/chưa chứng minh: validation quyết định bằng public topology và semantics FRR để bắt các vi phạm hỗ trợ được trước coverage gate (không tự điền đáp án; không mặc định nonconnected origin là sai); hoặc controller cho sửa lỗi lab đã chứng minh ngay cả khi còn coverage chưa hỗ trợ, vẫn giữ finalenvironment_error cho tới đủ kiểm tra. Phải chốt quy tắc trước pilot khác, giữgrader/oracle/primary cũ; không sửa sáu verdict này.
 
 Không mở rộng8dev/eval để chọn phương pháp trong đợt này vì chưa có tín hiệu cải thiện full intent. Việc còn thiếu của bộ nộp: đối chiếu acceptance toàn dự án, fresh-host reproduction, review báo cáo/slide/demo-video. Kết quả model âm không phải lý do BLOCKED toàn đồ án vĩnh viễn; còn quyết định phương pháp tiếp theo cần một thiết kế có thể kiểm chứng riêng.
+
+## Nghiên cứu khắc phục sau pilot — public necessary precheck, 2026-11-21
+
+Hướng ưu tiên: kiểm tra lỗi public đã chứng minh **trước** Batfish, thay vì đổi environment_error thành fail hoặc bỏ coverageguard. `bgp_public_precheck.py` / `bgp_public_feedback.py` là opt-in mới, chưa nối vào pipeline mặc định hoặc sáu trajectory đã đóng. Không thay renderer/schema/prompt sinh ban đầu/model/options; không đọc oracle/reference trong precheck và không thay quyết định IR.
+
+Tài liệu FRR về [ebgp-requires-policy](https://docs.frrouting.org/en/latest/bgp.html#require-policy-on-ebgp) mô tả policy hai chiều cho profile traditional; thiếu outgoing filter làm route không được quảng bá. Tài liệu current chỉ là đối chiếu, không thay calibration pinnedimage. Đã đối chiếu imageID/digest10.7.1 trong lock và sáu running-config thật từ positive control, tất cả traditional. Precheck chỉ nhận profile đã calibrate; profile/phạm vi lạ trảenvironment_error.
+
+Bộ kiểm cần thiết gồm: schema/IDs, ASN cố định và đủ peer IPv4 ở cả hai đầu theo public all-inter-AS constraint, khai báo network LAN công khai ở đâu đó, và chứng minh các đường policy đều chặn LAN cần trao đổi. Policy trace chỉ áp dụng IR exact-prefix/ordered/default action đã renderer hỗ trợ. Nếu mọi eBGP export binding đều deny một LAN công khai cần trao đổi thì không thể có truyền prefix giữa các AS, ngay cả giả sử tất cả originate đều đủ điều kiện. Tương tự kiểm import toàn cục hoặc mọi import của một router nonlocal/nonorigin đều deny. Đây là điều kiện cần, không phải solver/path/oracle.
+
+Không bắt mọi peer phải permit: một hướng thiếu policy riêng lẻ chỉ là diagnostic, nếu còn hướng cho phép thì check cần thiết có thể pass. Không suy vị trí originate đúng, không đánh nonconnected origin là sai FRR: chỉ cảnh báo coverage, giữ quyết định và guardv5 cho bước sau. Extra/multihop peer chưa calibrate làm dừng kết luận policy toàn cục. Ban/no-exportH2 và khả năng quảng bá thực tế vẫn do mandatory sender-export/Batfish/lab chấm.
+
+[Replay offline](../../results/bgp-public-precheck-20261121/offline-calibration.json):2/2positive không bị bác;5/5negative trong phạm vi bị bắt;3negative export còn lại passprecheck theo thiết kế nhưng vẫnfailgrader thật. Cả6IR model cũ được phát hiện lỗi cần sửa trướccoverage; byte cấu hình trước/sauprecheck không đổi. Mẫu này vẫn chỉ2ca, không phải16bài toán độc lập. 15test mới +192test trước =207test pass; thêm3test bảo vệ probe mộtcall đãpass. Chưa có bằng chứng model sửa thành công từ replay này.
+
+BGP01 có lỗi thiếupeerR5→R2 và mọi export đều defaultdeny. BGP02 có14peer nhưng toàn bộ export attachment lànone, chặn H1/H3 dù import policy đã có. Đây là lỗi quyết định độc lập với vùng chưa hỗ trợ của originate tạiR2. Feedback mới A1 chỉ literalFAIL; A2 nhận rooterrors/IDs từ publicprecheck và chỉ thị trảIR đã sửa, không FRR hints hay đáp án tham chiếu. Feedback này không nhận environment/coverage hoặc B1.
+
+Đã khóa mộtprobe A2 chẩn đoán, `runs/bgp-public-repair-probe-20261121-02`: dùng initial BGP02–A2 đã lưu, cùng initialmessages/model/digest/options/schema, thêm candidate thật và feedbackpublic. Đây là saved-initial diagnostic của phương pháp mới, không phải quỹ đạoA2 chính thức hoặc đối chứng B1/A1/A2 mới. Trần1generation, deadline900giây, context preflight5138token/12288/output3072. Không retry; không lab/reset/sudo. Nếu precheck mới pass mới chạy syntax/Batfish offline; dù chúng pass vẫnchưa fullpass khi thiếu lab. Một chuẩn bị01 chưa gọimodel được giữ riêng, superseded trướcgeneration để thêm binding image/profile rõ ràng; call duy nhất ở02.
+
+### Kết quả một A2 diagnostic với public feedback
+
+[Summary và delta thực](../../results/bgp-public-precheck-20261121/single-repair-probe.json): mộtcall,5138input/1767outputtoken; API361.603giây, khoảng370.671giây từ marker đến hết các bước diagnostic (không gọi là end-to-end intent gồm mọi overhead). Model đã đổi14peer.export từnone sang các policyIDp1–p7. Hai lỗi public `all_export_blocked:192.168.1.0/24` và `...192.168.3.0/24` biến mất; precheckpass, IRvalid, FRRsyntaxpass. Đây là thay đổi quyết định thực sự sau feedback khác nội dung, không phải đổiformat/hash đường dẫn.
+
+Nhưng còn giới hạn: R2 vẫnnetwork192.168.3.0/24 khôngconnected; model tự thêm10.6.6.0/30 tạiR1/R6, chưa chứng minh bảo toàn mọi quyết định trước. Batfish giữorigination coverageerror và báo prefixH2/H3/path violation. Đặc biệt không được lấy precheckpass làm no-exportH2 hoặc fullpass: các map ởR4 chưa có denyH2 theo intent, cần advertised-routes/BFpolicy/lab xác nhận. Kết quả hiện tại vẫn environment_error, labnotrun, fullverifiedpassfalse. Không gọi thêm model để chọn đáp án khác.
+
+Root launcher đúngmộtcandidate đã chuẩn bị và kiểm tra phần khôngroot:
+
+```bash
+cd /home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent
+bash ops/run_bgp_public_probe_lab.sh
+```
+
+Plan/log/summary/restore ở `runs/bgp-public-repair-lab-20261121-01`. Khônggeneration; kiểm byteconfig khớpIR, hashes source/candidate/grader/public/oracle và syntax/precheck trước replay. Dùng nguyên grader syntax/scope/lab/Batfish/exportv1 vàcoveragev5, không lấy bên thuận lợi khi bất đồng. Caller giữ lablock; lockrejection không chạycleanup. Một lượt đãstarted bịtừchối retry tựđộng; preservepartialresults. `sudo -n true` hiện yêu cầu mật khẩu nên cần Terminal người dùng, không hỏi lại quyền sửafile.
+
+Bước tiếp theo saulab: đối chiếu lỗi đã hết/lỗi mới và regression, rồi mới chọn thiết kế thử nghiệm mới cho hai agent. Chưa mở đối chứng8dev, chưafreeze chọn hybrid, chưare-evaluate primary. Nếu chỉ sửa một phần, giữ cả trước/sau; không coi được14attachment là đạt toànintent.
