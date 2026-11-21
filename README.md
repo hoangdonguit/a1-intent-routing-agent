@@ -79,3 +79,23 @@ không kết nối được. Batfish/FRR image, lab và inference chưa kiểm.
 Buổi chiều bắt đầu chuẩn bị/pin Docker–Containerlab–FRR và lab tam giác khi
 được giao và có quyền phù hợp; thứ tự đầy đủ trong bàn giao. Chưa triển khai
 backlog chiều, không commit/push.
+
+## BGP02 full verified PASS — dev diagnostic (22/11/2026)
+
+One staged dev diagnostic ends in PASS for syntax, protocol scope, Batfish,
+real lab and sender-export checks, with zero disagreements and successful restore.
+Rejected proposals and original pilot/primary verdicts are retained. This is one
+case, not a frozen B1/A1/A2 comparison or readiness to submit the whole project.
+
+Read-only evidence demo (requires local raw artifacts, no model/lab/sudo):
+
+```bash
+python3 scripts/demo_bgp02_fullpass.py
+```
+
+[Report and limitations](docs/phases/bgp-plan-study-20261120.md) ·
+[Verified proof](results/bgp-policy-and-coverage-20261121/full-pass-proof.json) ·
+[Local evidence-bundle receipt](results/bgp-policy-and-coverage-20261121/bundle-receipt.json).
+Fresh-host/live-intent reproduction and a common frozen controller with 8-dev
+comparison remain separate acceptance work. Model weights and the raw bundle
+are intentionally outside Git.
