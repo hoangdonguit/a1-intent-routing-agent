@@ -1,8 +1,10 @@
 # Đợt BGP giới hạn: origination, export và BGP plan — 2026-11-20
 
-## Kết luận hiện tại
+## Kết luận hiện tại — đóng pilot 2026-11-21
 
-Đã triển khai nhánh **hybrid opt-in**, chưa đổi raw-FRR mặc định và đã có1call hybrid B1 với IR/syntaxpass nhưng labfail/Batfishcoverageerror, chưa có fullpass hay bằng chứng tự sửa mới. Hai control đúng do renderer tạo qua FRR parser/daemon và Batfish offline; control đảo policy fail đúng kỳ vọng. Control sender cho phép/receiver chặn vẫn pass bộ kiểm offline cũ, vì vậy phép kiểm export phía sender là bổ sung cần calibration thật, không được gọi là đã nghiệm thu chỉ nhờ unit test. Calibration root lần đầu đã chạy: hai positive full pass, ba negative fail đúng; một negative no-op bị phát hiện, giữ verdict pass và dừng trước model. Revision2 đã hoàn tất10/10control đúng kỳ vọng và restore pass; không suy rằng model BGP02 phải pass mọi lần mới hoàn thành đồ án.
+**Pilot đã hoàn tất6/6trajectory,6initial call,0repair.** Cả6 IR/schema và rendered FRR syntax đều pass; lab6/6fail; Batfish6/6origination coverageerror; verdict cuối0pass/0fail/6environment_error. Restorepass, không còn runner. Renderer và sender-export grader đã có10control đúng kỳ vọng, nhưng chưa có bằng chứng hybrid cải thiện intent success hoặc hiệu quả tự sửa. Không chạy lại cùng pilot để chọn đáp án đẹp; không mở thêm phiên bản prompt trong đợt này.
+
+Kết quả này đóng đợt thử nghiệm, **không đồng nghĩa đồ án sẵn sàng nộp**. Chức năng đã triển khai, tính đúng của tool trên controls và hiệu quả model là ba cột riêng. Primary structured288/Vietnamese216/B0 không đổi.
 
 Nguồn: bản đã nộp `/home/xuandong/4_Ai_UngDung/Doan/docs/Group12_Proposal.pdf`, 3 trang, SHA256 `28cb9b5b018abad999c8775e1b3a1a357fea70cad08e9b3658bd46dcd5cf73a4`; đề `/home/xuandong/4_Ai_UngDung/Doan/docs/NT539.R11_DeTai_CuoiKy.pdf`, mục A1 và yêu cầu sản phẩm/rubric, SHA256 `518fac5a9aac95f0be10535635061086dbf41fa94e204074f326160fdf8b87bf`. Đã đọc lại toàn bộ proposal và phần đề liên quan. DOCX lịch sử không bổ sung cam kết. Proposal §1 không mặc định agent tốt hơn baseline; §3/7 coi 6–8B là mở rộng; Việt–Anh dev và B0 SyNET gốc vẫn là cam kết. Hybrid này là thử nghiệm mở rộng biểu diễn, không thay primary hay B0.
 
@@ -135,3 +137,28 @@ Sau mở máy: `bash ops/run_bgp_plan_study.sh resume` tiếp tục A1 của BGP
 `bash ops/finish_bgp_plan_pilot.sh` hoàn tất đúng các trajectory BGP02 chưa sinh, không mở lại BGP01. Wrapper không đổi model/schema/renderer/grader/feedback/stopping policy: mỗi child vẫn trần2call/1800giây, tổngtrần26call. Có log từng session và STOP giữ nguyên giữa các session; không tiến triển/restorefail/inflight không chắc chắn thì dừng. Chỉ việc khởi động lại launcher mới xóa STOP theo hành động resume rõ ràng. Launcher có thể chạy nhiều phiên, thời gian tùy số vòng thực sự sinh; vẫn dùng lệnh stop/status hiện có khi cần ngắt.
 
 Trong phiên công cụ21/11, `sudo -n true` yêu cầu mật khẩu nên không tự thực hiện lab root; đã chuẩn bị launcher để người dùng chạy Terminal. Các checks offline và tổng hợp vẫn thực hiện độc lập. Phải hoàn tất3trajectory BGP02 còn lại trước khi đóng pilot hoặc thiết kế phiên bản mới; không âm thầm đổi chính sách để làm A1/A2 sửa trên cùng run đã freeze.
+
+## Kết thúc pilot — bằng chứng và handoff tối thiểu
+
+[Summary cuối, hash và chi phí từng trajectory](../../results/bgp-plan-study-20261120/pilot-final.json). Mẫu số2ca dev ×3phương pháp ×1repeat =6trajectory; tổng6generation, không dùng hết trần26vì cả6 dừng ởcoverage. Raw IR6/6valid; rendered syntax6/6valid; lab0/6pass; full0/6pass; final6environment_error. Hiệu quả sửa **unavailable**, không phải0%: số quỹ đạo tới bước feedback/repair là0. Một repeat không đủ để kết luận tổng quát; không bootstrap hoặc nhập vào score primary.
+
+BGP01 ba initial request/options và candidate giống nhau. BGP02 request/options vẫn giống giữa ba mode, nhưng B1 khác A1/A2 ở prefix trong rules p3/p5/p6/p7; A1 và A2 có semantic candidate giống nhau. Đây là biến thiên initial output quan sát được, **không phải hiệu quả feedback**: chưa có feedback gửi model ở cả sáu lượt. Không đổi seed/temperature và không chọn output thuận lợi hơn.
+
+BGP02 cả14peer thiếu export attachment, R2 model originate thêm192.168.3.0/24 không nối trực tiếp. FRR default deny giải thích việc không quảng bá H2, vì vậy export assertion có thểpass trong khi kết nối cần giữ vẫnfail. Không coi export riêngpass là đáp ứng toàn intent; reachability/prefix/peering vẫn được giữ. BGP01 có13peer entries và policy thiếu, cùng nonconnected originateH2 tạiR2. Renderer giữ nguyên các quyết định này.
+
+Ba điểm kết luận:
+
+1. Chức năng: IR/schema/renderer, feedback/history/stopping, checkpoint và restore đã triển khai. Raw-FRR mặc định không đổi.
+2. Tool: renderer có positive/negative thực; sender-allow/receiver-deny bị grader mới bắt; giới hạn origination BF có8variant/evidence và guardv5. Không tuyên bố engine đã sửa.
+3. Model: chỉ chứng minh initial IR/syntax hợp lệ; chưa có fullpass, fail→feedback→repair→fullpass hoặc cải thiện intent/regression. Controller đã khóa dừng trêncoverage nên pilot không nhận diện được tác động của feedback.
+
+**Handoff ngắn cho công cụ khác (không cần cả repo lịch sử):**
+
+- Đọc `schemas/bgp-plan-v1.json`, `prompts/bgp-plan-v1.txt`, `src/a1_intent_routing/bgp_plan.py`, `bgp_plan_feedback.py`, `bgp_origin_coverage.py`, `ops/bgp_plan_study.py`; pins/versions/hash trong manifest và summary cuối.
+- Model4B digest/options không đổi. Input public BGP02 ở `data/benchmark/dev/dev_ebgp_prefix_02/public.json`, topology/base đi kèm; không gửi oracle/reference cho model.
+- Candidate tối thiểu: `runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_02--B1/round-0/` có payload/raw-response/IR/rendered config/evaluation. Expected: giữ reachability và no-exportH2 đồng thời. Observed: syntaxpass, exportpass do defaultdeny, labfail, BFcoverageerror do networkR2. Feedback/repair mới không tồn tại; không bịa payload feedback để gọi là evidence đã chạy.
+- Engine reproducer: absent-on/off và learned-bgp-on trong `runs/bgp-plan-study-20261120/origination/`, BF/lab captures được trích ở `origination-observed.json`. Cần giữ rõ valid/local/learned route và advertised-prefix, không chỉ membership trong BGP RIB.
+- Đã đóng10control và8variant; không yêu cầu chạy lại. Các hướng raw-FRRv1/v4/v9/v10, context/literal/compiler và hybridplanv1 đã có hồ sơ âm/giới hạn; không tiếp tục nối chỉ dẫn FRR để cứu cùngrun.
+- Hai ý tưởng cần thiết kế/phê duyệt như **phương pháp phiên bản mới**, chưa triển khai/chưa chứng minh: validation quyết định bằng public topology và semantics FRR để bắt các vi phạm hỗ trợ được trước coverage gate (không tự điền đáp án; không mặc định nonconnected origin là sai); hoặc controller cho sửa lỗi lab đã chứng minh ngay cả khi còn coverage chưa hỗ trợ, vẫn giữ finalenvironment_error cho tới đủ kiểm tra. Phải chốt quy tắc trước pilot khác, giữgrader/oracle/primary cũ; không sửa sáu verdict này.
+
+Không mở rộng8dev/eval để chọn phương pháp trong đợt này vì chưa có tín hiệu cải thiện full intent. Việc còn thiếu của bộ nộp: đối chiếu acceptance toàn dự án, fresh-host reproduction, review báo cáo/slide/demo-video. Kết quả model âm không phải lý do BLOCKED toàn đồ án vĩnh viễn; còn quyết định phương pháp tiếp theo cần một thiết kế có thể kiểm chứng riêng.

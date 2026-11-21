@@ -1,0 +1,339 @@
+{
+  "version": "bgp-plan-pilot-final-v1",
+  "status": "completed_negative_pilot",
+  "denominators": {
+    "cases": 2,
+    "repeats_per_case_method": 1,
+    "methods": 3,
+    "trajectories": 6,
+    "generations_observed": 6,
+    "repair_generations_observed": 0,
+    "repair_eligible_before_coverage_stop": 0
+  },
+  "counts": {
+    "pass": 0,
+    "fail": 0,
+    "environment_error": 6
+  },
+  "raw_ir_valid": 6,
+  "rendered_syntax_valid": 6,
+  "lab_pass": 0,
+  "totals": {
+    "input_tokens": 18831,
+    "output_tokens": 10946,
+    "api_total_seconds": 987.536332479
+  },
+  "tool_seconds": 612.5304391989989,
+  "http_seconds": 987.5415427029998,
+  "end_to_end_wall_seconds": null,
+  "repair_effectiveness": null,
+  "repair_effectiveness_unavailable": "Coverage stopping policy terminated all trajectories before any feedback/repair call. Not evidence that A1/A2 repair is ineffective.",
+  "case_pairing": {
+    "dev_ebgp_prefix_01": {
+      "same_initial_messages_options": true,
+      "distinct_semantic_candidates": 1
+    },
+    "dev_ebgp_prefix_02": {
+      "same_initial_messages_options": true,
+      "distinct_semantic_candidates": 2
+    }
+  },
+  "trajectories": [
+    {
+      "trajectory": "dev_ebgp_prefix_01--A1",
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "generations": 1,
+      "repairs": 0,
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "messages_sha256": "8c5e52ee2f819d4137e2303149eeb07425f40b2d55d55cd282feea0b02c01e12",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "9959b0b6130e583da70767085e8b6537ede26d264cac337442ddb94c54f7ef6f",
+      "candidate_hashes": {
+        "R1": "6bacb17ca6b04f81da81392e5d2300b50f29e020c28a92dde84ccf1428e1cd3d",
+        "R2": "350ad41365221bc8a4d2b5baf9f758cc6d4b6b3de9cb21373ddec4d850530cc1",
+        "R3": "d1fa8e52db088f7ab1c2403f02a751b94716c1333e8dc883f2383bd94a2af741",
+        "R4": "8a514fdf3b7c2b99c647ddc7b3ae3fa12dc8bb21327a74d9ccd5eb9bc296f057",
+        "R5": "efc6280055db4d4a9d8098924ba737f54c13ae3c1785bcd30efea48361a4ac8c",
+        "R6": "5261ebe0732e04587244e79362a377e1033557b5fe856c11aa82fdd0bbba2ff5"
+      },
+      "metrics": {
+        "input_tokens": 3129,
+        "output_tokens": 1923,
+        "api_total_seconds": 182.106118087,
+        "api_load_seconds": 5.575251459,
+        "api_prompt_eval_seconds": 3.201955,
+        "api_eval_seconds": 173.316015
+      },
+      "tool_seconds": 106.19464352100022,
+      "http_seconds": 182.1070557779999,
+      "disagreements": 0,
+      "decisions": {
+        "R2_originate": [
+          "10.6.2.0/30",
+          "10.6.7.0/30",
+          "192.168.2.0/24"
+        ],
+        "peer_count": 13,
+        "missing_export_policy_count": 13
+      },
+      "artifacts": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--A1/round-0",
+      "record_sha256": "b6b713a8acc38f03ed6e2dfc9527026ad65b7d7377df0f91e64511db18acad85"
+    },
+    {
+      "trajectory": "dev_ebgp_prefix_01--A2",
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "generations": 1,
+      "repairs": 0,
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "messages_sha256": "8c5e52ee2f819d4137e2303149eeb07425f40b2d55d55cd282feea0b02c01e12",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "9959b0b6130e583da70767085e8b6537ede26d264cac337442ddb94c54f7ef6f",
+      "candidate_hashes": {
+        "R1": "6bacb17ca6b04f81da81392e5d2300b50f29e020c28a92dde84ccf1428e1cd3d",
+        "R2": "350ad41365221bc8a4d2b5baf9f758cc6d4b6b3de9cb21373ddec4d850530cc1",
+        "R3": "d1fa8e52db088f7ab1c2403f02a751b94716c1333e8dc883f2383bd94a2af741",
+        "R4": "8a514fdf3b7c2b99c647ddc7b3ae3fa12dc8bb21327a74d9ccd5eb9bc296f057",
+        "R5": "efc6280055db4d4a9d8098924ba737f54c13ae3c1785bcd30efea48361a4ac8c",
+        "R6": "5261ebe0732e04587244e79362a377e1033557b5fe856c11aa82fdd0bbba2ff5"
+      },
+      "metrics": {
+        "input_tokens": 3129,
+        "output_tokens": 1923,
+        "api_total_seconds": 162.008083804,
+        "api_load_seconds": 0.000640902,
+        "api_prompt_eval_seconds": 0.103803,
+        "api_eval_seconds": 161.8907
+      },
+      "tool_seconds": 99.34023291299991,
+      "http_seconds": 162.00905431299998,
+      "disagreements": 0,
+      "decisions": {
+        "R2_originate": [
+          "10.6.2.0/30",
+          "10.6.7.0/30",
+          "192.168.2.0/24"
+        ],
+        "peer_count": 13,
+        "missing_export_policy_count": 13
+      },
+      "artifacts": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--A2/round-0",
+      "record_sha256": "312e8d6fbd22649149470f1c83bc580072d7b852bc484cb4ae8b4fa6c221d726"
+    },
+    {
+      "trajectory": "dev_ebgp_prefix_01--B1",
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "generations": 1,
+      "repairs": 0,
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "messages_sha256": "8c5e52ee2f819d4137e2303149eeb07425f40b2d55d55cd282feea0b02c01e12",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "9959b0b6130e583da70767085e8b6537ede26d264cac337442ddb94c54f7ef6f",
+      "candidate_hashes": {
+        "R1": "6bacb17ca6b04f81da81392e5d2300b50f29e020c28a92dde84ccf1428e1cd3d",
+        "R2": "350ad41365221bc8a4d2b5baf9f758cc6d4b6b3de9cb21373ddec4d850530cc1",
+        "R3": "d1fa8e52db088f7ab1c2403f02a751b94716c1333e8dc883f2383bd94a2af741",
+        "R4": "8a514fdf3b7c2b99c647ddc7b3ae3fa12dc8bb21327a74d9ccd5eb9bc296f057",
+        "R5": "efc6280055db4d4a9d8098924ba737f54c13ae3c1785bcd30efea48361a4ac8c",
+        "R6": "5261ebe0732e04587244e79362a377e1033557b5fe856c11aa82fdd0bbba2ff5"
+      },
+      "metrics": {
+        "input_tokens": 3129,
+        "output_tokens": 1923,
+        "api_total_seconds": 208.424066096,
+        "api_load_seconds": 5.573642166,
+        "api_prompt_eval_seconds": 3.316732,
+        "api_eval_seconds": 199.510498
+      },
+      "tool_seconds": 99.77607610799987,
+      "http_seconds": 208.4248919749998,
+      "disagreements": 0,
+      "decisions": {
+        "R2_originate": [
+          "10.6.2.0/30",
+          "10.6.7.0/30",
+          "192.168.2.0/24"
+        ],
+        "peer_count": 13,
+        "missing_export_policy_count": 13
+      },
+      "artifacts": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--B1/round-0",
+      "record_sha256": "ec91341122ca07d38e7549a0e777d6fe5ef0df537dccdc3b9fff68c7919094b0"
+    },
+    {
+      "trajectory": "dev_ebgp_prefix_02--A1",
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "generations": 1,
+      "repairs": 0,
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "messages_sha256": "258e92006d54e05eaabe4409140c4870e04819a2fcec5eda1c1d1951071a8733",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "37e36767e7ac9af792524bddaeb1e6c7e3e3235cc04458c7646f34f7fd52a07e",
+      "candidate_hashes": {
+        "R1": "209f7acc59cce5b96702d7e846f589f99eed9ef131db72944f23dd275c049d96",
+        "R2": "0359d74340814d6c89412ca80cdc0d4a4979159163f044f2bf06692948ef72db",
+        "R3": "3df16629fb40fc68022ba1badc5a0db4e58b0ccd137b81588fe3360c89977b48",
+        "R4": "1e4dc35ba60a0b6529e33a5fa4df50cd337e29c88ba008a32a89e665b448beed",
+        "R5": "f8c2f522c4387679c023c983fea69cf408641cbc41442a72c10b0d9c192db157",
+        "R6": "8298ac9388e6067d2b386ebf4840d4e6b71d7b712d005c89bd11b83f4237d181"
+      },
+      "metrics": {
+        "input_tokens": 3148,
+        "output_tokens": 1727,
+        "api_total_seconds": 146.418346757,
+        "api_load_seconds": 0.00097444,
+        "api_prompt_eval_seconds": 0.083959,
+        "api_eval_seconds": 146.321752
+      },
+      "tool_seconds": 101.8511707130001,
+      "http_seconds": 146.41922973199962,
+      "disagreements": 0,
+      "decisions": {
+        "R2_originate": [
+          "10.6.2.0/30",
+          "10.6.7.0/30",
+          "192.168.3.0/24"
+        ],
+        "peer_count": 14,
+        "missing_export_policy_count": 14
+      },
+      "artifacts": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_02--A1/round-0",
+      "record_sha256": "34c40c6df03c5c2eb5067e10ba9cf084bc02ac5cdc1ce9a79427487d28665a67"
+    },
+    {
+      "trajectory": "dev_ebgp_prefix_02--A2",
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "generations": 1,
+      "repairs": 0,
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "messages_sha256": "258e92006d54e05eaabe4409140c4870e04819a2fcec5eda1c1d1951071a8733",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "37e36767e7ac9af792524bddaeb1e6c7e3e3235cc04458c7646f34f7fd52a07e",
+      "candidate_hashes": {
+        "R1": "209f7acc59cce5b96702d7e846f589f99eed9ef131db72944f23dd275c049d96",
+        "R2": "0359d74340814d6c89412ca80cdc0d4a4979159163f044f2bf06692948ef72db",
+        "R3": "3df16629fb40fc68022ba1badc5a0db4e58b0ccd137b81588fe3360c89977b48",
+        "R4": "1e4dc35ba60a0b6529e33a5fa4df50cd337e29c88ba008a32a89e665b448beed",
+        "R5": "f8c2f522c4387679c023c983fea69cf408641cbc41442a72c10b0d9c192db157",
+        "R6": "8298ac9388e6067d2b386ebf4840d4e6b71d7b712d005c89bd11b83f4237d181"
+      },
+      "metrics": {
+        "input_tokens": 3148,
+        "output_tokens": 1727,
+        "api_total_seconds": 144.627062895,
+        "api_load_seconds": 0.000686775,
+        "api_prompt_eval_seconds": 0.085335,
+        "api_eval_seconds": 144.528974
+      },
+      "tool_seconds": 102.78901011799917,
+      "http_seconds": 144.62788855800045,
+      "disagreements": 0,
+      "decisions": {
+        "R2_originate": [
+          "10.6.2.0/30",
+          "10.6.7.0/30",
+          "192.168.3.0/24"
+        ],
+        "peer_count": 14,
+        "missing_export_policy_count": 14
+      },
+      "artifacts": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_02--A2/round-0",
+      "record_sha256": "42308754df48e85c91e1372ef0be2401c510f42f6b27f6c43bcd1a8c75106d73"
+    },
+    {
+      "trajectory": "dev_ebgp_prefix_02--B1",
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "generations": 1,
+      "repairs": 0,
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "messages_sha256": "258e92006d54e05eaabe4409140c4870e04819a2fcec5eda1c1d1951071a8733",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "5a9d46ab1d2817d1c725eedc60291bfea34e22d79cf40b9f1d6317c55e9da277",
+      "candidate_hashes": {
+        "R1": "eeccb7e7c8f90164ea1b081c5c06ec53331d72146d2f55778982984564e549a7",
+        "R2": "6db761635c5027e6e9cb77f0237bfc8fb08a6dc43f909e65fe1f75ec7fad2adf",
+        "R3": "18e6eae08e7fd0383343414952b92fb1fa099ade15827f52e8f9a768c8266290",
+        "R4": "17ed93a60b6c7f8857781c47ce2c10555a209f4d920098376ad9540cc53ec8ff",
+        "R5": "8bd5d67884c055689bc0963bb9786ca7579f7caffbc951c02bc6bc39e84c92ff",
+        "R6": "95876ad1780a9ae046239d01efc1dec466e2f82609d39d54d12c3ad8c51ce025"
+      },
+      "metrics": {
+        "input_tokens": 3148,
+        "output_tokens": 1723,
+        "api_total_seconds": 143.95265484,
+        "api_load_seconds": 4.292661204,
+        "api_prompt_eval_seconds": 3.204332,
+        "api_eval_seconds": 136.443276
+      },
+      "tool_seconds": 102.57930582599965,
+      "http_seconds": 143.95342234700001,
+      "disagreements": 0,
+      "decisions": {
+        "R2_originate": [
+          "10.6.2.0/30",
+          "10.6.7.0/30",
+          "192.168.3.0/24"
+        ],
+        "peer_count": 14,
+        "missing_export_policy_count": 14
+      },
+      "artifacts": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_02--B1/round-0",
+      "record_sha256": "e63433fafed368bc12a1f46ff8c2f25e7749d6038bd1e4ecb8727096efc13076"
+    }
+  ],
+  "restore": {
+    "status": "pass",
+    "path": "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-plan-study-20261120-02/session-1795255433054237260"
+  },
+  "primary_changed": false,
+  "new_evaluation_calls": 0,
+  "ci": "not estimated; two dev cases, one repeat, no repair observations",
+  "artifact_integrity": "6payload/options/raw-response/IR records and36config hashes verified"
+}

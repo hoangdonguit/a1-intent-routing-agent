@@ -26,12 +26,13 @@
   },
   "stop_policy": "first pass/environment error/semantic cycle/5 repairs; no imputation",
   "root_calibration": "10/10 controls expected; restore pass",
-  "pilot_calls": 1,
+  "pilot_calls": 6,
   "primary_updated": false,
   "execution_revision": "bgp-plan-study-v2",
   "code_revision": "82dd9c0",
   "local_manifest": "runs/bgp-plan-study-20261120-02/manifest.json",
   "real_root_lab_calibration": "pass",
-  "pilot": "partial1of6trajectories; B1environment_error; five trajectories unobserved",
-  "pilot_calls_at_calibration_close": 0
+  "pilot": "completed6of6;0fullpass;6coverageerrors;0repair",
+  "pilot_calls_at_calibration_close": 0,
+  "final_report": "pilot-final.json"
 }
