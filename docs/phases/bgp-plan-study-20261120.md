@@ -1,12 +1,12 @@
 # Đợt BGP giới hạn: origination, export và BGP plan — 2026-11-20
 
-## Kết luận hiện tại — đóng pilot 2026-11-21
+## Kết luận hiện tại — full verified PASS BGP02, bàn giao 2026-11-22
 
-**Pilot đã hoàn tất6/6trajectory,6initial call,0repair.** Cả6 IR/schema và rendered FRR syntax đều pass; lab6/6fail; Batfish6/6origination coverageerror; verdict cuối0pass/0fail/6environment_error. Restorepass, không còn runner. Renderer và sender-export grader đã có10control đúng kỳ vọng, nhưng chưa có bằng chứng hybrid cải thiện intent success hoặc hiệu quả tự sửa. Không chạy lại cùng pilot để chọn đáp án đẹp; không mở thêm phiên bản prompt trong đợt này.
+**`dev_ebgp_prefix_02` đã đạt full verified PASS** sau chuỗi diagnostic có giám sát: syntax, protocol scope, Batfish, lab và sender-export đều pass; 0 bất đồng, restore pass. [Proof và hash](../../results/bgp-policy-and-coverage-20261121/full-pass-proof.json) lưu 205 artifact (189 lõi grading/lineage và bổ sung context/runtime/input-pins), toàn bộ 237 tham chiếu evidence của 181 check. Grader chính giữ nguyên hash so với pilot đã đóng. Renderer không đổi và không tự sửa quyết định mạng; update cuối do model chọn, client áp đúng giá trị theo device ID.
 
-**Nghiên cứu mới sau pilot:** public precheck đã có đối chứng offline; một A2 diagnostic đã thay14export attachments, bỏ được hai lỗi global export củaH1/H3, IR/syntaxpass. Lab mới đã xác nhận hai chiềuH1↔H3 và hội tụ từfail sangpass, nhưng ròH2; finalcoverageerror và2bất đồngBF/lab. Đây không phải sửa lại score pilot.
+Đây là **một ca dev trong chuỗi phát triển có thay đổi contract**, không phải một quỹ đạo A2 đã freeze trước toàn bộ chuỗi, không chứng minh tốt hơn B1/A1 và chưa đủ để chọn phương pháp tổng quát. Proposal yêu cầu đo trung thực, không mặc định agent phải thắng. Pilot cũ vẫn **0/6 full pass, 6 coverage errors, 0 repair**, không bị đổi verdict. Primary structured288/Vietnamese216/B0 giữ nguyên.
 
-Kết quả này đóng đợt thử nghiệm, **không đồng nghĩa đồ án sẵn sàng nộp**. Chức năng đã triển khai, tính đúng của tool trên controls và hiệu quả model là ba cột riêng. Primary structured288/Vietnamese216/B0 không đổi.
+Có thể xem proof mà không gọi model/lab bằng `python3 scripts/demo_bgp02_fullpass.py`. Cần raw artifacts local; clone Git đơn lẻ chưa đủ. Fresh-host reproduction, controller chung/đối chứng8dev và bộ nộp cuối vẫn còn phải nghiệm thu; chưa ghi “sẵn sàng nộp”.
 
 Nguồn: bản đã nộp `/home/xuandong/4_Ai_UngDung/Doan/docs/Group12_Proposal.pdf`, 3 trang, SHA256 `28cb9b5b018abad999c8775e1b3a1a357fea70cad08e9b3658bd46dcd5cf73a4`; đề `/home/xuandong/4_Ai_UngDung/Doan/docs/NT539.R11_DeTai_CuoiKy.pdf`, mục A1 và yêu cầu sản phẩm/rubric, SHA256 `518fac5a9aac95f0be10535635061086dbf41fa94e204074f326160fdf8b87bf`. Đã đọc lại toàn bộ proposal và phần đề liên quan. DOCX lịch sử không bổ sung cam kết. Proposal §1 không mặc định agent tốt hơn baseline; §3/7 coi 6–8B là mở rộng; Việt–Anh dev và B0 SyNET gốc vẫn là cam kết. Hybrid này là thử nghiệm mở rộng biểu diễn, không thay primary hay B0.
 
@@ -207,3 +207,75 @@ Grader mới bắtregression: R4 quảngbá192.168.2.0/24 ra10.6.3.1 và10.6.4.2
 Verdict cuối candidate mới **environment_error**, labfail, exportfail; sourcegrader/schema/model/options và sốliệu cũ khôngđổi. Rootlabevaluation1, generationstage này0, restorepass. Tổng nghiên cứu mới vẫnchỉ1call model; không sinh thêm đểchọn kếtquả. Bộ213unit/contracttests đãpass trước replay; hashplan/sourceđược kiểmtrước ápconfig.
 
 Hướng sửa tiếp đã địnhvị cụthể: bảo toàn hai flow H1/H3 đãpass, sửa no-exportH2 ởcác exportbinding/policy thực sự ởR4(p5/p6), và xử lý coverage của networkH3 tạiR2 ở phiên bản/phạm vi phương pháp mới. Không tựcấm mọi nonconnectednetwork hoặc đểrenderer sửađápán. Trước mộtcall model tiếp theo phải chốt cách phânbiệt lỗi policyđãcó lab/advertisementproof với coverageunsupported; final vẫnE khi mandatorycoveragechưađủ. Chưa mở thêmcall, chưađổi prompt hoặccontroller sau khi xem kếtquả này.
+
+## Sửa tiếp H2 và adaptation coverage theo từng scope — 2026-11-21
+
+Được giao tiếp tục ba bước sau khi đánhgiá probe: sửaH2, kiểm hồi quy, rồi xử lýcoverage riêng. Mỗi bước cóscope/điểmdừng và tốiđa1generation riêng; không mở lại pilot6trajectory hoặc sửagrader/renderer. Đây vẫn là chuỗi devdiagnostic cógiámsát, không phảievaluationA2 đãfreeze banđầu, không dùng để so điểm vớiB1/A1 hoặc cậpnhậtprimary.
+
+### Policy-only H2: model và lab đãđạt
+
+`bgp-observed-export-feedback-v1` chỉ nhận lỗi được corroborate bằng **quảngbáthật phía origin** và testRoutePoliciesOUT gắnđúngNode/RemoteIP/Export_Policy. Nếu profile/reportunsupported, khôngcóadvertisement, policybindingkhôngkhớpIR hoặcAction khácPERMIT thìkhôngeligiblecho model. Lỗi coverage không được giả thành routingfailure. A1vẫnliteralFAIL, B1khôngfeedback; A2nhận2rooterrors tạiR4 thay vì toàn bộ lỗi dây chuyền ở các router nhận.
+
+Lượt sửa mới chỉ chođổi policy definitions/bindings; ASN/peer/activation/originate bấtbiến. [Model result](../../results/bgp-policy-and-coverage-20261121/h2-model-repair.json):7165input/1765outputtoken, API404.870giây. Model khôngthêmfilterH2riêng màđổi exportR4tới10.6.3.1/10.6.4.2 thànhnone, giữimport. Vớiprofiletraditional đãcalibrate, missingexport làdefaultdeny; phạmvi chặnrộnghơnH2 nênphải kiểm toànintent, không tựđánhpass từIRtrace. Scope/IR/precheck/syntaxpass.
+
+[Lab result](../../results/bgp-policy-and-coverage-20261121/h2-lab.json) đãxong: **lab_ping_testerPASS và bgp_export_testerPASS**; H1↔H3/hộitụ vàmọiprefixassertion của lab đềuđạt; H2khôngcònleak. DefaultdenyR4 không làm graderfailchỉvìpeerStatePolicy: grader kiểmEstablished, route readiness vàFIBstable; không đổiassertion đểđạtkếtquả. Giữđúngphạmvi củaintent, không tựđòimọipeer phải exportmọiLAN.
+
+Final vẫnenvironment_error doBFv5originationcoverage và2bất đồngcũ (`R2:prefix:192.168.3.0/24`, `traffic:0:reachability`). Sourcegrading/model/options/schema/renderer/oraclekhôngđổi. Restorepass. Đây làmodelđãsửathànhcông phầnchức nănglab/policy trongmộtca, chưa fullverifiedpass.
+
+### Bước coverage-only: request mới đãkhóa, chưa cókếtquả
+
+Chỉ đủđiềukiện khi syntax/scope/lab/export đềuPASS, BF chỉcóknownoriginationcoverageexception; parser/timeout/outage hoặcunsupported khác phải dừng. `bgp-origination-coverage-advisory-v1` nêu**unverified_coverage**, khôngnói statement làFRRsai. Model tựchọncfg tươngđương trongphạmvi verifiercalibrates, chỉđượcđổi cácoriginatearrays; toànpolicy/peer/ASN/base đãđạt giữnguyên. Signature kiểm bấtbiến; không overwrite các quyếtđịnh khác đểcứu model.
+
+`runs/bgp-coverage-repair-20261121-01`: trần1generation,7194inputtokens preflight, model4B/digest/context12288/output3072/options cũ. Giữhistory2: initialpublicmessages +2cặpthửgầnnhất, không cắtpublicinput vàkhôngđổi budget. Nếu modelgiữnguyênfeaturesunsupported thì vẫnE. Nếu BFPASS thì vẫn chờlab; chỉ đủmọi mandatorytool vàkhôngbấtđồng mới fullpass. Không xóa networkstatement trongsnapshot, không dùnglabresult điền vàoBF hoặcchọncôngcụcó lợi. Originalcandidate vàhồsơguardv5 vẫn giữtạichỗ.
+
+Rootlauncher cho candidatecoverage (chỉ mở khi precheck/syntax/**BF thật**PASS vàscopehợp lệ) là `bash ops/run_bgp_coverage_probe_lab.sh`; khônggeneration, cóhash/log/restore vàrefusereplayattemptđãstarted. Tổng234unit/contracttests pass; không coi các tests đó thay fresh-host hoặcfullpipelinevalidation.
+
+## Đóng chuỗi sửa: kết quả cuối và phạm vi kết luận
+
+### Giữ nguyên cả kết quả âm và regression
+
+| Bước | Kết quả quan sát | Quyết định |
+|---|---|---|
+| Initial BGP02–A2 đã lưu | Lab fail, BF coverage error | Giữ nguyên trong pilot cũ |
+| Public-feedback diagnostic | H1↔H3/convergence pass nhưng leak H2 | Tiếp tục từ IR này để sửa policy |
+| Policy-only H2 diagnostic | Lab và export pass; BF coverage error | Giữ làm parent hợp lệ theo scope |
+| Full-IR coverage proposal | Model bỏ network H3 ở R2 nhưng bật lại export R4; BF fail, scope fail | Bác toàn bộ proposal, giữ raw output; không chạy lab, không ghép trường tốt |
+| Device-ID origin update | Model tự chọn originate arrays; client giữ nguyên các trường khác theo contract | Full grader pass; 0 disagreement; restore pass |
+
+Ở bước cuối, output contract đổi thành `bgp-origin-update-v1`: model trả update theo device ID, không viết lại toàn IR. Source là parent H2 đã pass lab, không lấy policy từ reference hoặc ghép với originate của proposal bị bác. `bgp_origin_update.apply` không nhận topology/intent/oracle, chỉ áp literal array model trả. Test cho prefix sai chứng minh applier giữ nguyên lựa chọn sai hoặc bác schema, không suy đáp án. Root launcher kiểm raw response = update và parent + update = materialized IR trước grading.
+
+Raw update gồm 6 object; chỉ R2 đổi thực chất: originate không còn `192.168.3.0/24`. Đây là **model tự đổi candidate**, không phải grader xóa statement hoặc thay kết quả Batfish bằng lab. Nonconnected origination vẫn là giới hạn được giữ trong guard v5 và các reproducer cũ. Không tắt import-check, không sửa engine, không bỏ assertion. Candidate mới nằm trong phạm vi đã kiểm chứng nên guard không còn phát sinh lỗi; mọi query và mandatory tool vẫn chạy.
+
+### Kết quả và chi phí
+
+- Update cuối: raw update schema valid, materialized IR valid, rendered FRR syntax pass, Batfish pass, lab pass, export pass. Không gọi đó là raw FRR do model tự viết đúng.
+- Lượt update cuối dùng **2975 input / 284 output token**, API **22.213 giây**; model/digest/context12288/output cap3072/options giữ nguyên. Prompt/schema đã đổi để thể hiện output contract mới, nên không dùng chênh lệch tốc độ này làm benchmark hiệu năng model.
+- Chuỗi gồm 1 initial đã nằm trong pilot cũ + 4 generation diagnostic sau đó (có 1 proposal bị bác). Các diagnostic mới tổng **22472 input / 5566 output token**, API **1235.301 giây**; không cộng lại initial vào chi phí mới hoặc nhập vào primary.
+- Có **245 unit/contract tests pass**. Lab thật là evidence riêng, không suy full pass từ các test. Final có 181 check thuộc 5 tool/report, không phải 181 bài toán độc lập.
+- Không tính bootstrap CI hoặc repair gain tổng quát từ một ca. Cần controller/contract chung trước khi chạy đối chứng 8 dev; schema A1/A2 phải giống và không được tiết lộ lỗi có cấu trúc cho A1 qua scope mask động.
+
+### Demo evidence chỉ đọc
+
+```bash
+cd /home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent
+python3 scripts/demo_bgp02_fullpass.py
+```
+
+Lệnh xác minh hash, sự tồn tại của mọi evidence được dùng, đủ tool/check pass và literal materialization, rồi in chuỗi trước/sau. Không gọi Ollama/Docker/sudo/lab, không sinh lại cấu hình; không thay fresh-host hoặc live-intent demo. Các launcher có marker đã hoàn tất không chạy lại tự động. Nếu muốn re-evaluate hoặc demo lab từ môi trường khác phải dùng run riêng và ghi rõ lý do.
+
+### Nghiệm thu ba cột và việc tiếp theo
+
+| Phần | Chức năng triển khai | Tính đúng công cụ kiểm chứng | Hiệu quả model đo được |
+|---|---|---|---|
+| Public/observed/coverage feedback | Có module và source-hashed one-call probes, A1 literal FAIL/B1 không feedback | Positive/negative/replay và guard tests; không nhận outage/parser thành coverage advisory | Một chuỗi dev sửa được H1/H3 rồi H2; có regression và scope failure được giữ |
+| Origin update contract | Copy parent, chỉ áp literal model arrays theo ID | Không tự chọn prefix; raw model update/materialization được đối chiếu trước lab | Candidate cuối full pass trên một ca BGP02 |
+| Full grading | Giữ nguyên syntax/scope/BF/lab/export | Hash 5 grader chính không đổi, 181 check pass, 0 disagreement, restore pass | Chưa có đối chứng phương pháp mới hoặc bằng chứng tổng quát |
+| Bộ nộp | Code, proof và demo evidence đã có | Fresh-host và live-intent/video chưa nghiệm thu | Chưa sẵn sàng nộp toàn đồ án |
+
+[Inventory chuẩn bị đối chứng8dev](../../results/bgp-policy-and-coverage-20261121/dev-comparison-preparation.json) có đủ 8 ca, B1/A1/A2, 3 repeat = 72 trajectory theo proposal. **Chưa launchable**: scripts hiện tại là diagnostic gắn với ca; phải tích hợp controller chung và repair contract cố định/công bằng trước generation, chốt eligibility/stagnation/coverage và calibration phù hợp. Không mở eval hoặc chọn/freeze dựa trên một ca đã xem. Nếu re-evaluate24ca đã xem phải giữ riêng run/phiên bản, không chọn kết quả đẹp nhất. B0 và 6–8B/Việt–Anh giữ phạm vi nghiệm thu trước, không tự bổ sung cam kết từ DOCX cũ.
+
+### Gói evidence để bàn giao
+
+[Receipt và SHA256](../../results/bgp-policy-and-coverage-20261121/bundle-receipt.json) ghi archive local `runs/bgp02-fullpass-evidence-20261122-01.tar.gz` (khoảng153KiB), gồm205artifact + các resultsummary được chọn. Không chứa weights/venv, toàn bộruns hoặc prompt giao việc Codex. Archive nằm ngoài Git; Git chỉ giữ code/proof/receipt nhỏ.
+
+Đã giải nén vào một thư mục tạm độc lập, chỉ copy reader stdlib, rồi chạy demo thành công. Đây là **kiểm tra tính di chuyển của evidence**, không phải fresh-host reproduction của Ollama/Batfish/lab. Giữ bundle theo receipt hoặc các raw artifact gốc để demo offline có thể đối chiếu hash; clone chỉ có code không tạo lại bằng chứng cũ.

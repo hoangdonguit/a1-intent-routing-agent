@@ -1,0 +1,52 @@
+{
+  "version": "bgp-coverage-origin-only-probe-v1",
+  "status": "fail",
+  "gate": "batfish",
+  "new_generation_calls": 1,
+  "full_verified_pass": false,
+  "lab": "not_run",
+  "primary_updated": false,
+  "metrics": {
+    "input_tokens": 7194,
+    "output_tokens": 1750,
+    "api_total_seconds": 446.614479849,
+    "api_load_seconds": 0.001044595,
+    "api_prompt_eval_seconds": 4.791228,
+    "api_eval_seconds": 441.156154
+  },
+  "unavailable": {},
+  "http_seconds": 446.61536803099807,
+  "raw_ir_valid": true,
+  "semantic_changed": true,
+  "precheck_status": "pass",
+  "precheck_errors": [],
+  "rendered_syntax_status": "pass",
+  "batfish_status": "fail",
+  "batfish_error_properties": [
+    "prefix:192.168.2.0/24"
+  ],
+  "measured_probe_seconds": 455.6469407029981,
+  "source_public_errors": [],
+  "removed_public_errors": [],
+  "repair_scope_status": "fail",
+  "origination_changes": [
+    {
+      "device": "R2",
+      "before": [
+        "10.6.2.0/30",
+        "10.6.7.0/30",
+        "192.168.3.0/24"
+      ],
+      "after": [
+        "10.6.2.0/30",
+        "10.6.7.0/30"
+      ]
+    }
+  ],
+  "eligible_for_full_lab": false,
+  "artifacts": "runs/bgp-coverage-repair-20261121-01",
+  "request_sha256": "347fdb86b6c9c6fda1ec41638e901836f52c5bfa156914b13ec72805771ecd99",
+  "raw_response_sha256": "fa19d030cec7f12c1d04fedf54daa86f5afd1c8c2beb992ffd8a6a2d20c19141",
+  "source_plan_sha256": "20873cf3267931850a55a83e3d3495fc74de27d9eb5c02b7aa644eaf25f6b366",
+  "classification": "rejected scope deviation; not merged"
+}

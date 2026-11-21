@@ -1,0 +1,91 @@
+{
+  "version": "prospective-8dev-comparison-preparation-v1",
+  "allow_launch": false,
+  "status": "preparation_only; generic frozen controller not implemented",
+  "cases": [
+    {
+      "case_id": "dev_static_01",
+      "task_group": "static",
+      "public_sha256": "54d8b9dbc12357d95eebdab40b92899dae859fbfd762f04d3c1e537d32a2d7c5",
+      "oracle_grading_only_sha256": "4762c4560721bdc97eda023a4948845429cc78daca86f61719b6d76241937e5b"
+    },
+    {
+      "case_id": "dev_static_02",
+      "task_group": "static",
+      "public_sha256": "11d1429fa3f15a44dda4030735b1dbba3ba8c1c5139f46d64c474d5d6f72c69c",
+      "oracle_grading_only_sha256": "e6074214c1258c9d2a839121d936e2e2d9b19ffa753ed46dbbb29b0225b556f9"
+    },
+    {
+      "case_id": "dev_ospf_01",
+      "task_group": "ospf",
+      "public_sha256": "e626f064bf250d196ca0d0d2b0763ceb50b167ace3f8ebb7e2584903bc7cc729",
+      "oracle_grading_only_sha256": "9c53ec797eda3839cc53a456e3148dc2ab9e36c80a3ca4cadde7526f7c3f52ac"
+    },
+    {
+      "case_id": "dev_ospf_02",
+      "task_group": "ospf",
+      "public_sha256": "97467c7c92959be8cbcd757c471223474c41acd910455d134e2f078d8c5f06ab",
+      "oracle_grading_only_sha256": "354c7636d66820a3d52d0e3327b45bb01cf3d49c78311d0b9d41ed45af1512b3"
+    },
+    {
+      "case_id": "dev_ebgp_prefix_01",
+      "task_group": "ebgp_prefix",
+      "public_sha256": "c22d981f520a0da69c1c1e931d635dd363adce070193c5e2365227ea9b673413",
+      "oracle_grading_only_sha256": "8794330f55f3363da0bf8ec9dab6eac4c48099de6914de898281ea2219470cf3"
+    },
+    {
+      "case_id": "dev_ebgp_prefix_02",
+      "task_group": "ebgp_prefix",
+      "public_sha256": "e2cb554f907005722117f78ed2168c5c45238211a5ca509ab2bdd0a65a7577e8",
+      "oracle_grading_only_sha256": "876eaa11567659c29c61e0ad05acbe7a74a8de48444c5053715120511c30cd73"
+    },
+    {
+      "case_id": "dev_path_regression_01",
+      "task_group": "path_regression",
+      "public_sha256": "29674f4315593224bac46f8218b7fbc2970721ec7745213e936d4c2fc7f5db2b",
+      "oracle_grading_only_sha256": "4a6243782ed456e1d254fdfda6b24d159335832f917be0bb7f3742e91ef7a88e"
+    },
+    {
+      "case_id": "dev_path_regression_02",
+      "task_group": "path_regression",
+      "public_sha256": "9906c3accc3089711f30452bba6ef43212ffbdc58dbffdbf8b974b48d2e2dd6d",
+      "oracle_grading_only_sha256": "2d81f4f31121696041152c08264eabd4356bbbf340f3a5de21ba432e6e89b271"
+    }
+  ],
+  "methods": [
+    "B1",
+    "A1",
+    "A2"
+  ],
+  "repeats": 3,
+  "prospective_trajectories": 72,
+  "model": "qwen3:4b-instruct-2507-q4_K_M",
+  "model_digest": "0edcdef34593eac1aa2be9c7d06c432dcf81945adca5eca2f27662c18f168ba0",
+  "options": {
+    "num_ctx": 12288,
+    "num_predict": 3072,
+    "temperature": 0,
+    "seed": 539,
+    "top_k": 40,
+    "top_p": 0.9,
+    "repeat_penalty": 1.0
+  },
+  "max_repairs": 5,
+  "baseline_generations": 1,
+  "required_before_launch": [
+    "One generic repair contract/controller frozen before generation; current scripts are case-specific diagnostics",
+    "Same initial input/model/prompt/options per case across B1/A1/A2",
+    "Same repair output schema for A1 and A2, fixed independently of private error classes; A1 literal FAIL must not leak structured feedback through a dynamically restricted schema",
+    "Common mandatory grader/oracle and predeclared coverage/error/stagnation policy",
+    "Raw IR/update schema validity separated from materialized FRR syntax and full verification",
+    "Readiness controls reviewed for the final controller/version; reuse only exact config/source/evidence hashes",
+    "Bootstrap by case with all repeats/methods in same cluster; no CI from this one successful dev case"
+  ],
+  "do_not": [
+    "reopen old six-trajectory pilot",
+    "overwrite primary structured288/Vietnamese216/B0",
+    "promote staged dev chain to a blinded A2 evaluation",
+    "start eval before dev version frozen"
+  ],
+  "new_generation_calls": 0
+}

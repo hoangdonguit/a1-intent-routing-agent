@@ -1,0 +1,15 @@
+{
+  "version": "bgp02-fullpass-local-evidence-bundle-v1",
+  "archive": "runs/bgp02-fullpass-evidence-20261122-01.tar.gz",
+  "sha256": "f06b8122a5a5085903f58bb888b1072e62949c523ed8080db488c961ecae62db",
+  "bytes": 156054,
+  "file_count": 211,
+  "artifact_count": 205,
+  "proof": "results/bgp-policy-and-coverage-20261121/full-pass-proof.json",
+  "scope": "selected raw evidence + model payloads/outputs + input/pin files and result summaries; not all runs, model weights or virtualenv",
+  "archive_in_git": false,
+  "replay": "Extract in a separate workspace, place scripts/demo_bgp02_fullpass.py under its scripts/ directory, then run that stdlib reader. Do not overwrite an active checkout input set.",
+  "limitations": "read-only proof bundle, not a fresh-host/live-intent reproduction",
+  "relocated_bundle_demo": "pass; stdlib reader verified under independent temporary workspace",
+  "fresh_host_or_live_lab_reproduction": false
+}

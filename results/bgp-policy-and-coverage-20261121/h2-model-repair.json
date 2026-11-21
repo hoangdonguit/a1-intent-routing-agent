@@ -1,0 +1,65 @@
+{
+  "version": "bgp-H2-policy-only-repair-v1",
+  "status": "environment_error",
+  "gate": "batfish",
+  "new_generation_calls": 1,
+  "full_verified_pass": false,
+  "lab": "not_run",
+  "primary_updated": false,
+  "metrics": {
+    "input_tokens": 7165,
+    "output_tokens": 1765,
+    "api_total_seconds": 404.870432699,
+    "api_load_seconds": 4.556465246,
+    "api_prompt_eval_seconds": 7.684488,
+    "api_eval_seconds": 392.609277
+  },
+  "unavailable": {},
+  "http_seconds": 404.8714531659989,
+  "raw_ir_valid": true,
+  "semantic_changed": true,
+  "precheck_status": "pass",
+  "precheck_errors": [],
+  "rendered_syntax_status": "pass",
+  "batfish_status": "environment_error",
+  "batfish_error_properties": [
+    "bgp_origination_coverage",
+    "prefix:192.168.3.0/24",
+    "traffic:0:path",
+    "traffic:0:reachability"
+  ],
+  "measured_probe_seconds": 413.7684097040001,
+  "source_public_errors": [],
+  "removed_public_errors": [],
+  "repair_scope_status": "pass",
+  "target_policy_predictions": [
+    {
+      "device": "R4",
+      "peer": "10.6.3.1",
+      "prefix": "192.168.2.0/24",
+      "ir_policy_action": "deny",
+      "meaning": "IR policy prediction only; actual advertisements still require lab"
+    },
+    {
+      "device": "R4",
+      "peer": "10.6.4.2",
+      "prefix": "192.168.2.0/24",
+      "ir_policy_action": "deny",
+      "meaning": "IR policy prediction only; actual advertisements still require lab"
+    }
+  ],
+  "eligible_for_target_lab": true,
+  "scope": "one policy-only saved-lineage A2 diagnostic; not a method-level evaluation",
+  "source_request_sha256": "7d928a4e5ebe2f0e49f18d36343d3ab5e6ffad1ab57827f3a7832f49ce8b4b55",
+  "source_plan_sha256": "4f3414168739ce46b925012136ab7597ed6b60468d90a5fe59570b35ac9fa9d5",
+  "artifacts": "runs/bgp-h2-policy-repair-20261121-01",
+  "candidate_hashes": {
+    "R3.conf": "85e63bc79c7a7b5b43f3d0754b30f2b577cbd1320bfc9321b0d6084c0cd0bc48",
+    "R2.conf": "c06db3bbaf8a50710f68dd085fed4546cdabeab97cde57df7731b530eaa904a9",
+    "R1.conf": "348d4aca8a8f1c7339b74db078fbf79f78042366aa353f936f864b775bc83cf7",
+    "R5.conf": "2f848946857f5f0b634da6517a7ce60cbf1a14026360d9ab033c2d990c3b2ca0",
+    "R4.conf": "1e4dc35ba60a0b6529e33a5fa4df50cd337e29c88ba008a32a89e665b448beed",
+    "R6.conf": "75faa3640f04bce4fa7a33013013db904e1fb33df5e0ea606408650e87545bc8"
+  },
+  "unit_contract_tests": 234
+}
