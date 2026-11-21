@@ -1,0 +1,321 @@
+{
+  "observed_trajectories": 3,
+  "calls_started": 3,
+  "counts": {
+    "pass": 0,
+    "fail": 0,
+    "environment_error": 3
+  },
+  "repairs_observed": 0,
+  "same_initial_messages_options": true,
+  "same_candidate": true,
+  "total_input_tokens": 9387,
+  "total_output_tokens": 5769,
+  "api_total_seconds": 552.5382679869999,
+  "trajectories": [
+    {
+      "trajectory": "dev_ebgp_prefix_01--B1",
+      "index": 0,
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "messages_sha256": "8c5e52ee2f819d4137e2303149eeb07425f40b2d55d55cd282feea0b02c01e12",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "9959b0b6130e583da70767085e8b6537ede26d264cac337442ddb94c54f7ef6f",
+      "candidate_hashes": {
+        "R1": "6bacb17ca6b04f81da81392e5d2300b50f29e020c28a92dde84ccf1428e1cd3d",
+        "R2": "350ad41365221bc8a4d2b5baf9f758cc6d4b6b3de9cb21373ddec4d850530cc1",
+        "R3": "d1fa8e52db088f7ab1c2403f02a751b94716c1333e8dc883f2383bd94a2af741",
+        "R4": "8a514fdf3b7c2b99c647ddc7b3ae3fa12dc8bb21327a74d9ccd5eb9bc296f057",
+        "R5": "efc6280055db4d4a9d8098924ba737f54c13ae3c1785bcd30efea48361a4ac8c",
+        "R6": "5261ebe0732e04587244e79362a377e1033557b5fe856c11aa82fdd0bbba2ff5"
+      },
+      "metrics": {
+        "input_tokens": 3129,
+        "output_tokens": 1923,
+        "api_total_seconds": 208.424066096,
+        "api_load_seconds": 5.573642166,
+        "api_prompt_eval_seconds": 3.316732,
+        "api_eval_seconds": 199.510498
+      },
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "error_properties": [
+        [
+          "batfish_verifier",
+          "bgp_origination_coverage"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.1.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.2.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.3.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:0:path"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:0:reachability"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:1:path"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:1:reachability"
+        ],
+        [
+          "lab_ping_tester",
+          "bgp_peer.10.6.7.1"
+        ],
+        [
+          "lab_ping_tester",
+          "bgp_peer.10.6.7.2"
+        ],
+        [
+          "lab_ping_tester",
+          "convergence"
+        ],
+        [
+          "lab_ping_tester",
+          "intent.reachability"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.1.0/24"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.2.0/24"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.3.0/24"
+        ]
+      ],
+      "record": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--B1/round-0/record.json",
+      "record_sha256": "ec91341122ca07d38e7549a0e777d6fe5ef0df537dccdc3b9fff68c7919094b0"
+    },
+    {
+      "trajectory": "dev_ebgp_prefix_01--A1",
+      "index": 0,
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "messages_sha256": "8c5e52ee2f819d4137e2303149eeb07425f40b2d55d55cd282feea0b02c01e12",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "9959b0b6130e583da70767085e8b6537ede26d264cac337442ddb94c54f7ef6f",
+      "candidate_hashes": {
+        "R1": "6bacb17ca6b04f81da81392e5d2300b50f29e020c28a92dde84ccf1428e1cd3d",
+        "R2": "350ad41365221bc8a4d2b5baf9f758cc6d4b6b3de9cb21373ddec4d850530cc1",
+        "R3": "d1fa8e52db088f7ab1c2403f02a751b94716c1333e8dc883f2383bd94a2af741",
+        "R4": "8a514fdf3b7c2b99c647ddc7b3ae3fa12dc8bb21327a74d9ccd5eb9bc296f057",
+        "R5": "efc6280055db4d4a9d8098924ba737f54c13ae3c1785bcd30efea48361a4ac8c",
+        "R6": "5261ebe0732e04587244e79362a377e1033557b5fe856c11aa82fdd0bbba2ff5"
+      },
+      "metrics": {
+        "input_tokens": 3129,
+        "output_tokens": 1923,
+        "api_total_seconds": 182.106118087,
+        "api_load_seconds": 5.575251459,
+        "api_prompt_eval_seconds": 3.201955,
+        "api_eval_seconds": 173.316015
+      },
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "error_properties": [
+        [
+          "batfish_verifier",
+          "bgp_origination_coverage"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.1.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.2.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.3.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:0:path"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:0:reachability"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:1:path"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:1:reachability"
+        ],
+        [
+          "lab_ping_tester",
+          "bgp_peer.10.6.7.1"
+        ],
+        [
+          "lab_ping_tester",
+          "bgp_peer.10.6.7.2"
+        ],
+        [
+          "lab_ping_tester",
+          "convergence"
+        ],
+        [
+          "lab_ping_tester",
+          "intent.reachability"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.1.0/24"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.2.0/24"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.3.0/24"
+        ]
+      ],
+      "record": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--A1/round-0/record.json",
+      "record_sha256": "b6b713a8acc38f03ed6e2dfc9527026ad65b7d7377df0f91e64511db18acad85"
+    },
+    {
+      "trajectory": "dev_ebgp_prefix_01--A2",
+      "index": 0,
+      "status": "environment_error",
+      "stop_reason": "tool_environment",
+      "messages_sha256": "8c5e52ee2f819d4137e2303149eeb07425f40b2d55d55cd282feea0b02c01e12",
+      "options_sha256": "7123af917c87261d40fd1075b425f0b84b44a87e000310660e2c2b22ea822228",
+      "semantic_hash": "9959b0b6130e583da70767085e8b6537ede26d264cac337442ddb94c54f7ef6f",
+      "candidate_hashes": {
+        "R1": "6bacb17ca6b04f81da81392e5d2300b50f29e020c28a92dde84ccf1428e1cd3d",
+        "R2": "350ad41365221bc8a4d2b5baf9f758cc6d4b6b3de9cb21373ddec4d850530cc1",
+        "R3": "d1fa8e52db088f7ab1c2403f02a751b94716c1333e8dc883f2383bd94a2af741",
+        "R4": "8a514fdf3b7c2b99c647ddc7b3ae3fa12dc8bb21327a74d9ccd5eb9bc296f057",
+        "R5": "efc6280055db4d4a9d8098924ba737f54c13ae3c1785bcd30efea48361a4ac8c",
+        "R6": "5261ebe0732e04587244e79362a377e1033557b5fe856c11aa82fdd0bbba2ff5"
+      },
+      "metrics": {
+        "input_tokens": 3129,
+        "output_tokens": 1923,
+        "api_total_seconds": 162.008083804,
+        "api_load_seconds": 0.000640902,
+        "api_prompt_eval_seconds": 0.103803,
+        "api_eval_seconds": 161.8907
+      },
+      "raw_ir_valid": true,
+      "tools": {
+        "syntax_checker": "pass",
+        "protocol_scope": "pass",
+        "lab_ping_tester": "fail",
+        "batfish_verifier": "environment_error",
+        "bgp_export_tester": "pass"
+      },
+      "error_properties": [
+        [
+          "batfish_verifier",
+          "bgp_origination_coverage"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.1.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.2.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "prefix:192.168.3.0/24"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:0:path"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:0:reachability"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:1:path"
+        ],
+        [
+          "batfish_verifier",
+          "traffic:1:reachability"
+        ],
+        [
+          "lab_ping_tester",
+          "bgp_peer.10.6.7.1"
+        ],
+        [
+          "lab_ping_tester",
+          "bgp_peer.10.6.7.2"
+        ],
+        [
+          "lab_ping_tester",
+          "convergence"
+        ],
+        [
+          "lab_ping_tester",
+          "intent.reachability"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.1.0/24"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.2.0/24"
+        ],
+        [
+          "lab_ping_tester",
+          "prefix:192.168.3.0/24"
+        ]
+      ],
+      "record": "runs/bgp-plan-study-20261120-02/pilot/dev_ebgp_prefix_01--A2/round-0/record.json",
+      "record_sha256": "312e8d6fbd22649149470f1c83bc580072d7b852bc484cb4ae8b4fa6c221d726"
+    }
+  ],
+  "last_restore": {
+    "status": "pass",
+    "path": "/home/xuandong/4_Ai_UngDung/Doan/a1-intent-routing-agent/runs/bgp-plan-study-20261120-02/session-1795252102508542482"
+  },
+  "primary_updated": false,
+  "checks": {
+    "unit_contract_tests": 192,
+    "status": "pass",
+    "finish_wrapper_tests": 4,
+    "resource_warning_strict_recheck": "pass",
+    "frozen_hashes": "pass",
+    "root_launch": "password_required; manual Terminal launcher prepared"
+  }
+}
